@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hljs.highlightElement(block);
         });
     } else {
-        responseElement.innerText = "Ответ не найден.";
+        responseElement.innerText = "No Response.";
     }
 });
 
