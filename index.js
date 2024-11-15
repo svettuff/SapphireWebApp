@@ -1,5 +1,10 @@
 async function selectTopic(topic) {
-    document.getElementById('response').innerText = "Loading...";
+    const responseElement = document.getElementById('response');
+
+    // Проверяем, существует ли элемент с id 'response'
+    if (responseElement) {
+        responseElement.innerText = "Loading...";
+    }
 
     try {
         const response = await fetch('https://sapphireserver.almandine.ch:5000/get_response', {
@@ -23,7 +28,10 @@ async function selectTopic(topic) {
         // Перенаправление на новую страницу
         window.location.href = 'playground.html';
     } catch (error) {
-        document.getElementById('response').innerText = `Error: ${error.message}`;
+        // Проверяем, существует ли элемент с id 'response'
+        if (responseElement) {
+            responseElement.innerText = `Error: ${error.message}`;
+        }
         console.error("Error:", error);
     }
 }
