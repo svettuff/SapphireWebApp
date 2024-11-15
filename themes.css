@@ -25,15 +25,26 @@ html, body {
     gap: 24px;
 }
 
-.form-container h3:first-of-type {
-    margin-top: 0; /* Уменьшите верхний отступ */
-}
-
+/* Сброс всех отступов у заголовков */
 .form-container h3 {
     text-align: center;
     color: #333;
     font-size: 20px;
     font-weight: 700;
+    margin: 0; /* Убираем все отступы */
+    padding: 0; /* Убираем все внутренние отступы */
+}
+
+/* Специальный стиль для первого заголовка */
+.form-container fieldset:first-of-type h3 {
+    margin-top: 0; /* Убираем верхний отступ у первого заголовка */
+    margin-bottom: 20px; /* Добавляем нижний отступ для разделения */
+}
+
+/* Стиль для всех остальных заголовков */
+.form-container fieldset:not(:first-of-type) h3 {
+    margin-top: 20px; /* Добавляем верхний отступ для остальных заголовков */
+    margin-bottom: 20px; /* Настраиваем нижний отступ */
 }
 
 .topic-button-container {
