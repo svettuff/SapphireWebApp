@@ -43,15 +43,16 @@ html, body {
 
 /* Стили для блоков кода с черным фоном */
 .response-text pre {
-    background-color: #2d2d2d; /* Черный фон */
+    background-color: #2e2e2e; /* Темный фон */
     color: #f8f8f2; /* Светлый текст */
     border-radius: 8px;
-    padding: 16px;
-    font-family: "Courier New", Courier, monospace; /* Моноширинный шрифт */
-    font-size: 14px;
+    padding: 20px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16px;
+    line-height: 1.6;
     overflow-x: auto;
-    white-space: pre-wrap; /* Перенос строк для длинных строк */
-    margin: 16px 0;
+    margin: 20px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
 }
 
 /* Стили для inline-кода */
@@ -60,7 +61,7 @@ html, body {
     color: #f8f8f2; /* Светлый текст */
     border-radius: 4px;
     padding: 2px 4px;
-    font-family: "Courier New", Courier, monospace; /* Моноширинный шрифт */
+    font-family: "Courier New", Courier, monospace;
     font-size: 14px;
 }
 

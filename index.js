@@ -31,14 +31,21 @@ function getQueryParam(param) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const responseText = getQueryParam('response');
+    const responseText = new URLSearchParams(window.location.search).get('response');
     const responseElement = document.getElementById('response-text');
 
     if (responseText) {
         // Преобразуем текст с Markdown в HTML
         responseElement.innerHTML = marked.parse(decodeURIComponent(responseText));
+
+        // Подсвечиваем синтаксис C++ в коде
+        const codeBlocks = responseElement.querySelectorAll('pre code');
+        codeBlocks.forEach((block) => {
+            hljs.highlightElement(block); // Используем highlight.js для подсветки
+        });
     } else {
         responseElement.innerText = "Ответ не найден.";
     }
 });
+
 
