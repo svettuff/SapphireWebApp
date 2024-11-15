@@ -1,34 +1,25 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru"> <!-- Добавлен атрибут lang -->
 <head>
-    <title>Изучение C++</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .topic {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            background-color: #fff;
-            cursor: pointer;
-        }
-    </style>
+    <title>Sapphire C++ Course</title>
+    <link rel="stylesheet" href="themes.css">
 </head>
 <body>
-<h2>Выберите тему для изучения C++</h2>
-<div class="topic" onclick="selectTopic('Введение в C++')">Введение в C++</div>
-<div class="topic" onclick="selectTopic('Управляющие структуры')">Управляющие структуры</div>
-<div class="topic" onclick="selectTopic('Функции и рекурсия')">Функции и рекурсия</div>
-
-<div id="response"></div>
+<div class="form-container">
+    <h2>Выберите тему для изучения C++</h2>
+    <div class="topic-button-container">
+        <div class="topic-button" onclick="selectTopic('Введение в C++')">Введение в C++</div>
+        <div class="connector"></div>
+        <div class="topic-button" onclick="selectTopic('Управляющие структуры')">Управляющие структуры</div>
+        <div class="connector"></div>
+        <div class="topic-button" onclick="selectTopic('Функции и рекурсия')">Функции и рекурсия</div>
+    </div>
+    <div id="response" class="payment-notification"></div>
+</div>
 
 <script>
     async function selectTopic(topic) {
-        document.getElementById('response').innerText = "Загрузка...";
+        document.getElementById('response').innerText = "Loading...";
 
         try {
             const response = await fetch('https://sapphireserver.almandine.ch:5000/get_response', {
@@ -40,14 +31,14 @@
             });
 
             if (!response.ok) {
-                throw new Error(`Ошибка HTTP: ${response.status}`);
+                throw new Error(`Error HTTP: ${response.status}`);
             }
 
             const data = await response.json();
-            document.getElementById('response').innerText = data.answer || "Ошибка при получении данных";
+            document.getElementById('response').innerText = data.answer || "Error with getting data";
         } catch (error) {
-            document.getElementById('response').innerText = `Ошибка: ${error.message}`;
-            console.error("Ошибка:", error);
+            document.getElementById('response').innerText = `Error: ${error.message}`;
+            console.error("Error:", error);
         }
     }
 </script>
