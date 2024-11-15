@@ -37,7 +37,7 @@ html, body {
 
 /* Стили для блоков кода с черным фоном */
 .response-text pre {
-    background-color: #2e2e2e; /* Темный фон */
+    background-color: #44475a; /* Темный фон */
     color: #f8f8f2; /* Светлый текст */
     border-radius: 8px;
     padding: 20px;
