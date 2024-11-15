@@ -46,7 +46,7 @@ html, body {
     line-height: 1.6;
     overflow-x: auto;
     margin: 20px 0;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Тень для блока */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Стили для inline-кода */
