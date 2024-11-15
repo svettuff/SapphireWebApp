@@ -25,20 +25,14 @@ html, body {
     gap: 24px;
 }
 
-/* Стили для заголовков */
-.response-container h2 {
-    text-align: center;
-    color: #333;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
 /* Стили для текстового ответа */
 .response-text {
     color: #333;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 600;
     line-height: 1.5;
+    text-align: justify;
+    font-family: inherit;
 }
 
 /* Стили для блоков кода с черным фоном */
