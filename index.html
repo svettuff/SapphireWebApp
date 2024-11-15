@@ -1,20 +1,26 @@
 ﻿<!DOCTYPE html>
-<html lang="ru"> <!-- Добавлен атрибут lang -->
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sapphire C++ Course</title>
     <link rel="stylesheet" href="themes.css">
 </head>
 <body>
 <div class="form-container">
     <h2>Выберите тему для изучения C++</h2>
-    <div class="topic-button-container">
-        <div class="topic-button" onclick="selectTopic('Введение в C++')">Введение в C++</div>
-        <div class="connector"></div>
-        <div class="topic-button" onclick="selectTopic('Управляющие структуры')">Управляющие структуры</div>
-        <div class="connector"></div>
-        <div class="topic-button" onclick="selectTopic('Функции и рекурсия')">Функции и рекурсия</div>
-    </div>
-    <div id="response" class="payment-notification"></div>
+    <form id="courseSelectionForm">
+        <fieldset>
+            <div class="topic-button-container">
+                <div class="topic-button" onclick="selectTopic('Введение в C++')">Введение в C++</div>
+                <div class="connector"></div>
+                <div class="topic-button" onclick="selectTopic('Управляющие структуры')">Управляющие структуры</div>
+                <div class="connector"></div>
+                <div class="topic-button" onclick="selectTopic('Функции и рекурсия')">Функции и рекурсия</div>
+            </div>
+        </fieldset>
+        <div id="response" class="payment-notification"></div>
+    </form>
 </div>
 
 <script>
