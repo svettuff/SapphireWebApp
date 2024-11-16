@@ -119,20 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.padding = '2px';
 });
 
-let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
-
-window.addEventListener("scroll", function () {
-    const currentScrollY = window.scrollY || window.pageYOffset;
-
-    // Проверяем, если разница в прокрутке больше 50 пикселей
-    if (Math.abs(currentScrollY - lastScrollY) > 50) {
-        document.activeElement.blur(); // Закрываем клавиатуру
-    }
-
-    // Обновляем значение последней позиции прокрутки
-    lastScrollY = currentScrollY;
-});
-
 document.addEventListener('focusin', (event) => {
     if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
         const element = event.target.closest('.input-output, .CodeMirror');
@@ -164,5 +150,6 @@ document.addEventListener('focusout', () => {
     if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
         // Убираем добавленный отступ при потере фокуса
         document.body.style.paddingBottom = '0px';
+        document.activeElement.blur(); // Закрываем клавиатуру
     }
 });
