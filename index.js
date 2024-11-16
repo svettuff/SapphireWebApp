@@ -112,11 +112,26 @@ document.addEventListener('DOMContentLoaded', () => {
         theme: 'playground',
     });
 
+    const input = CodeMirror.fromTextArea(document.getElementById('input'), {});
+    const output = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor' });
+
     // Применение ваших стилей к CodeMirror
     const editorWrapper = editor.getWrapperElement();
     editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
     editorWrapper.style.fontSize = '17px';
     editorWrapper.style.padding = '2px';
+
+    const inputWrapper = input.getWrapperElement();
+    inputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+    inputWrapper.style.fontSize = '17px';
+    inputWrapper.style.padding = '2px';
+    inputWrapper.style.height = '50px';
+
+    const outputWrapper = output.getWrapperElement();
+    outputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+    outputWrapper.style.fontSize = '17px';
+    outputWrapper.style.padding = '2px';
+    outputWrapper.style.height = '150px';
 });
 
 let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
@@ -141,21 +156,19 @@ document.body.appendChild(extraSpace);
 document.addEventListener('focusin', (event) => {
     const element = event.target.closest('.input-output, .CodeMirror');
 
-    if (element && window.visualViewport) {
-        // Используем visualViewport для получения текущей высоты видимой области
-        const viewportHeight = window.visualViewport.height;
+    if (element) {
+        // Вычисляем положение элемента и высоту окна
+        const viewportHeight = window.innerHeight;
         const elementRect = element.getBoundingClientRect();
-        const elementBottom = elementRect.bottom;
+        const elementBottom = elementRect.bottom + window.scrollY;
 
-        // Вычисляем, сколько нужно прокрутить, чтобы нижняя часть элемента оказалась на уровне верхней границы клавиатуры
-        const offset = elementBottom - viewportHeight;
+        // Вычисляем позицию, чтобы нижняя часть элемента была в центре экрана
+        const scrollPosition = elementBottom - viewportHeight / 2;
 
-        if (offset > 0) {
-            // Прокручиваем страницу, чтобы нижняя часть элемента совпала с верхом клавиатуры
-            window.scrollBy({
-                top: offset,
-                behavior: 'smooth'
-            });
-        }
+        // Прокручиваем страницу к нужной позиции
+        window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth'
+        });
     }
 });
