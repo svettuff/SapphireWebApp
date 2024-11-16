@@ -10,14 +10,18 @@
 </head>
 <body>
 <div class="response-container">
-  <div class="response-text" id="response-text">
-  </div>
-
+  <div class="response-text" id="response-text"> </div>
   <div class="code-editor-container">
     <textarea id="code-editor">// Enter your code here...</textarea>
   </div>
+  <button id="run-button" class="run-button">Run</button>
+  <div class="code-editor-container">
+    <textarea id="input-data" class="input-output" placeholder="Enter input data..."></textarea>
+  </div>
+  <div class="code-editor-container">
+    <textarea id="output-data" class="input-output" readonly placeholder="Output will be displayed here..."></textarea>
+  </div>
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>

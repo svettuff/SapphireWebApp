@@ -1,7 +1,7 @@
 ﻿html, body {
     height: auto;
     overflow-y: auto;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: flex-start;
     margin: 0;
@@ -10,7 +10,6 @@
 }
 
 .response-container {
-    width: 600px;
     max-width: 100%;
     padding: 20px;
     background-color: #ddd;
@@ -86,6 +85,48 @@ fieldset {
 
 * {
     box-sizing: border-box;
+}
+
+.run-button {
+    width: 100%; /* Попробуйте уменьшить ширину или добавить отступы */
+    padding: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background-color: #44475a;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+    text-align: center;
+}
+
+.run-button:hover {
+    background-color: #383b4a;
+}
+
+.input-output {
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* Hide overflow */
+    white-space: pre-wrap;
+    resize: none;
+
+    display: flex; /* Use flexbox to align content */
+    justify-content: center;
+
+    background-color: #44475a;
+    color: #f8f8f2;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 17px;
+}
+
+.input-output:focus {
+    outline: none; /* Remove focus outline */
 }
 
 .code-editor-container {
