@@ -146,10 +146,10 @@ document.addEventListener('focusin', (event) => {
             // Вычисляем положение элемента и высоту окна
             const viewportHeight = window.innerHeight;
             const elementRect = element.getBoundingClientRect();
-            const elementTop = elementRect.top + window.scrollY;
+            const elementBottom = elementRect.bottom + window.scrollY;
 
-            // Вычисляем позицию, чтобы элемент оказался выше центра
-            const scrollPosition = elementTop - viewportHeight / 2 + 10;
+            // Вычисляем позицию, чтобы нижняя часть элемента была в центре экрана
+            const scrollPosition = elementBottom - viewportHeight / 2;
 
             // Прокручиваем страницу к нужной позиции
             window.scrollTo({
