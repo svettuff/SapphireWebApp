@@ -104,7 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         responseElement.innerText = "No theme.";
     }
-});
 
+    // Инициализация редактора CodeMirror
+    const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+        mode: 'text/x-c++src', // Подсветка для C++
+        matchBrackets: true,   // Подсветка скобок
+        theme: 'playground',
+    });
+
+    // Применение ваших стилей к CodeMirror
+    const editorWrapper = editor.getWrapperElement();
+    editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+    editorWrapper.style.fontSize = '17px';
+});
 
 

@@ -1,5 +1,4 @@
-﻿/* Основные настройки для всей страницы */
-html, body {
+﻿html, body {
     height: auto;
     overflow-y: auto;
     display: flex;
@@ -10,91 +9,134 @@ html, body {
     background-color: #f5f5f5;
 }
 
-/* Основной контейнер */
 .response-container {
     width: 600px;
     max-width: 100%;
     padding: 20px;
-    background-color: #ddd; /* Белый фон */
+    background-color: #ddd;
     border: 1px solid #ddd;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 24px; /* Пространство между блоками */
+    gap: 24px;
 }
 
-/* Стили для текстового ответа */
 .response-text {
-    color: #1c1c1e; /* Мягкий черный */
+    color: #1c1c1e;
     font-size: 17px;
-    font-weight: 400; /* Легкий вес текста */
-    line-height: 1.5; /* Межстрочный интервал */
-    text-align: left; /* Текст выравнивается влево */
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 0;
 }
 
-/* Стили для заголовков внутри текста */
 .response-text h1, .response-text h2, .response-text h3 {
-    color: #000; /* Черный цвет для заголовков */
-    font-weight: 600; /* Полужирное начертание */
+    color: #000;
+    font-weight: 600;
     margin-top: 16px;
-    margin-bottom: 8px; /* Отступы сверху и снизу */
-    line-height: 1.4; /* Межстрочный интервал */
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
-/* Стили для параграфов */
 .response-text p {
-    margin: 0 0 16px 0; /* Отступы между абзацами */
-    font-size: 17px; /* Размер текста */
+    margin: 0 0 16px 0;
+    font-size: 17px;
     color: #1c1c1e;
 }
 
-/* Стили для блоков кода с темной темой */
 .response-text pre {
-    background-color: #44475a; /* Темный фон */
-    color: #f8f8f2; /* Светлый текст */
+    background-color: #44475a;
+    color: #f8f8f2;
     border-radius: 8px;
     padding: 16px;
     font-family: "Courier New", Courier, monospace;
     font-size: 14px;
     line-height: 1.6;
-    overflow-x: auto; /* Скролл для длинного текста */
-    margin: 20px 0; /* Отступы сверху и снизу */
+    overflow-x: auto;
+    margin: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Стили для inline-кода */
 .response-text code {
-    background-color: #44475a; /* Темно-серый фон */
-    color: #f8f8f2; /* Светлый текст */
+    background-color: #44475a;
+    color: #f8f8f2;
     border-radius: 4px;
     padding: 2px 4px;
     font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
+    font-size: 17px;
 }
 
-/* Стили для списков */
 .response-text ul, .response-text ol {
-    margin: 0 0 16px 20px; /* Отступы для списков */
+    margin: 0 0 16px 20px;
     padding: 0;
 }
 
-/* Стили для элементов списка */
 .response-text li {
-    margin-bottom: 8px; /* Отступ между элементами списка */
+    margin-bottom: 8px;
     line-height: 1.5;
 }
 
-/* Общие отступы и стиль для fieldset */
 fieldset {
     border: none;
     padding: 0;
 }
 
-/* Базовые настройки для box-sizing */
 * {
     box-sizing: border-box;
+}
+
+.code-editor-container {
+    background-color: #44475a;
+    color: #f8f8f2;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.CodeMirror {
+    background-color: #44475a !important;
+    color: #ecf0f1;
+}
+
+.cm-type {
+    color: #ff7b72;
+}
+
+.cm-keyword {
+    color: #ff7b72;
+}
+
+.cm-number {
+    color: #79c0ff;
+}
+
+.cm-def {
+    color: #d2a8ff;
+}
+
+.cm-variable {
+    color: white;
+}
+
+.cm-operator {
+    color: #ffffff;
+}
+
+.cm-comment {
+    color: #8b949e;
+}
+
+.cm-string {
+    color: #a5d6ff;
+}
+
+.cm-meta {
+    color: #a5d6ff;
 }
