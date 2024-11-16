@@ -172,3 +172,7 @@ document.addEventListener('focusin', (event) => {
         });
     }
 });
+
+document.addEventListener('focusout', () => {
+    // При потере фокуса ничего не делаем, чтобы не вызывать ненужных артефактов
+});
