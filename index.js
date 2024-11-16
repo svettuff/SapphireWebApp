@@ -122,12 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", function () {
         document.activeElement.blur(); // Закрывает клавиатуру
     });
-
-    // Прокручивание редактора при фокусе
-    editor.on("focus", function () {
-        setTimeout(() => {
-            editor.scrollIntoView();
-            window.scrollTo(0, editor.getWrapperElement().offsetTop);
-        }, 300);
-    });
 });
