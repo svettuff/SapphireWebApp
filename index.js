@@ -139,21 +139,23 @@ extraSpace.style.visibility = 'hidden'; // Делаем его невидимы�
 document.body.appendChild(extraSpace);
 
 document.addEventListener('focusin', (event) => {
-        const element = event.target.closest('.input-output, .CodeMirror');
+    const element = event.target.closest('.input-output, .CodeMirror');
 
-        if (element) {
-            // Вычисляем положение элемента и высоту окна
-            const viewportHeight = window.innerHeight;
-            const elementRect = element.getBoundingClientRect();
-            const elementBottom = elementRect.bottom + window.scrollY;
+    if (element && window.visualViewport) {
+        // Используем visualViewport для получения текущей высоты видимой области
+        const viewportHeight = window.visualViewport.height;
+        const elementRect = element.getBoundingClientRect();
+        const elementBottom = elementRect.bottom;
 
-            // Вычисляем позицию, чтобы нижняя часть элемента была в центре экрана
-            const scrollPosition = elementBottom - viewportHeight / 2;
+        // Вычисляем, сколько нужно прокрутить, чтобы нижняя часть элемента оказалась на уровне верхней границы клавиатуры
+        const offset = elementBottom - viewportHeight;
 
-            // Прокручиваем страницу к нужной позиции
-            window.scrollTo({
-                top: scrollPosition,
+        if (offset > 0) {
+            // Прокручиваем страницу, чтобы нижняя часть элемента совпала с верхом клавиатуры
+            window.scrollBy({
+                top: offset,
                 behavior: 'smooth'
             });
         }
+    }
 });
