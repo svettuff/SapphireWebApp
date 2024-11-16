@@ -119,12 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.padding = '2px';
 });
 
-window.addEventListener("scroll", function () {
-    // Проверяем, прокручивается ли основная страница
-    const scrollY = window.scrollY || window.pageYOffset;
+let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
 
-    // Если страница прокручивается (значение scrollY больше 0), убираем фокус
-    if (scrollY > 0) {
-        document.activeElement.blur(); // Снимает фокус, закрывая клавиатуру
+window.addEventListener("scroll", function () {
+    const currentScrollY = window.scrollY || window.pageYOffset;
+
+    // Проверяем, если разница в прокрутке больше 50 пикселей
+    if (Math.abs(currentScrollY - lastScrollY) > 50) {
+        document.activeElement.blur(); // Закрываем клавиатуру
     }
+
+    // Обновляем значение последней позиции прокрутки
+    lastScrollY = currentScrollY;
 });
