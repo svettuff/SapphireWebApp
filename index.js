@@ -119,37 +119,34 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.padding = '2px';
 });
 
+// Добавляем скрытое пространство внизу страницы
+const extraSpace = document.createElement('div');
+extraSpace.style.height = '1000px';
+extraSpace.style.visibility = 'hidden'; // Делаем его невидимым
+document.body.appendChild(extraSpace);
+
 document.addEventListener('focusin', (event) => {
     if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
         const element = event.target.closest('.input-output, .CodeMirror');
 
         if (element) {
-            // Получаем размеры и положение элемента
+            // Вычисляем положение элемента и высоту окна
             const viewportHeight = window.innerHeight;
             const elementRect = element.getBoundingClientRect();
-            const elementBottom = elementRect.bottom;
+            const elementTop = elementRect.top + window.scrollY;
 
-            // Вычисляем, сколько нужно добавить пространства, чтобы элемент оказался выше центра
-            const centerPosition = viewportHeight / 2; // Центр экрана
-            const extraSpaceNeeded = elementBottom - centerPosition + 10; // Смещаем элемент чуть выше центра
+            // Вычисляем позицию, чтобы элемент оказался выше центра
+            const scrollPosition = elementTop - viewportHeight / 2 + 10;
 
-            if (extraSpaceNeeded > 0) { // Добавляем отступ только если это нужно
-                document.body.style.paddingBottom = `${extraSpaceNeeded}px`;
-
-                // Плавно прокручиваем страницу
-                window.scrollBy({
-                    top: extraSpaceNeeded,
-                    behavior: 'smooth'
-                });
-            }
+            // Прокручиваем страницу к нужной позиции
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
         }
     }
 });
 
 document.addEventListener('focusout', () => {
-    if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
-        // Убираем добавленный отступ при потере фокуса
-        document.body.style.paddingBottom = '0px';
-        document.activeElement.blur(); // Закрываем клавиатуру
-    }
+    document.activeElement.blur(); // Закрываем клавиатуру
 });
