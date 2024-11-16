@@ -7,7 +7,7 @@ html, body {
     align-items: flex-start;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ddd;
 }
 
 /* Основной контейнер */
@@ -18,7 +18,6 @@ html, body {
     background-color: #ddd;
     border: 1px solid #ddd;
     border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

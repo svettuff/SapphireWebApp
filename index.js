@@ -134,11 +134,25 @@ window.addEventListener("scroll", function () {
 });
 
 document.addEventListener('focusin', (event) => {
-    if (event.target.classList.contains('input-output') || event.target.id === 'code-editor') {
-        document.body.style.paddingBottom = '10px'; // Поднимаем всё тело на 10 пикселей
+    // Проверяем, является ли целевой элемент текстовым полем или редактором кода
+    if (event.target.classList.contains('input-output') || event.target.closest('.CodeMirror')) {
+        // Увеличиваем отступ снизу
+        document.body.style.transition = 'padding-bottom 0.3s ease'; // Плавный переход
+        document.body.style.paddingBottom = '300px'; // Увеличиваем отступ снизу
+
+        // Прокручиваем целевой элемент в центр
+        setTimeout(() => {
+            if (event.target.classList.contains('input-output')) {
+                event.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else if (event.target.closest('.CodeMirror')) {
+                event.target.closest('.CodeMirror').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 100); // Задержка, чтобы отступ применился перед прокруткой
     }
 });
 
 document.addEventListener('focusout', () => {
-    document.body.style.paddingBottom = '0px'; // Возвращаем всё на место
+    // Уменьшаем отступ снизу с плавным переходом
+    document.body.style.transition = 'padding-bottom 0.3s ease'; // Плавный переход
+    document.body.style.paddingBottom = '0px'; // Убираем отступ снизу
 });
