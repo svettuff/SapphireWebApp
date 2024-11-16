@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editorWrapper = editor.getWrapperElement();
     editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
     editorWrapper.style.fontSize = '17px';
+    editorWrapper.style.padding = '2px';
 });
 
 
