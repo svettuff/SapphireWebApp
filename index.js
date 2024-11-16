@@ -117,14 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
     editorWrapper.style.fontSize = '17px';
     editorWrapper.style.padding = '2px';
+});
 
-    window.addEventListener("scroll", function () {
-        // Проверяем, прокручивается ли основная страница
-        const scrollY = window.scrollY || window.pageYOffset;
+window.addEventListener("scroll", function () {
+    // Проверяем, прокручивается ли основная страница
+    const scrollY = window.scrollY || window.pageYOffset;
 
-        // Если страница прокручивается (значение scrollY больше 0), убираем фокус
-        if (scrollY > 0) {
-            document.activeElement.blur(); // Снимает фокус, закрывая клавиатуру
-        }
-    });
+    // Если страница прокручивается (значение scrollY больше 0), убираем фокус
+    if (scrollY > 0) {
+        document.activeElement.blur(); // Снимает фокус, закрывая клавиатуру
+    }
 });
