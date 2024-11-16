@@ -119,7 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.padding = '2px';
 });
 
-// Добавляем скрытое пространство внизу страницы
+let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
+
+window.addEventListener("scroll", function () {
+    const currentScrollY = window.scrollY || window.pageYOffset;
+
+    // Проверяем, если разница в прокрутке больше 50 пикселей
+    if (Math.abs(currentScrollY - lastScrollY) > 50) {
+        document.activeElement.blur(); // Закрываем клавиатуру
+    }
+
+    // Обновляем значение последней позиции прокрутки
+    lastScrollY = currentScrollY;
+});
+
 const extraSpace = document.createElement('div');
 extraSpace.style.height = '1000px';
 extraSpace.style.visibility = 'hidden'; // Делаем его невидимым
@@ -145,8 +158,4 @@ document.addEventListener('focusin', (event) => {
             });
         }
     }
-});
-
-document.addEventListener('focusout', () => {
-    document.activeElement.blur(); // Закрываем клавиатуру
 });
