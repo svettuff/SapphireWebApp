@@ -132,3 +132,13 @@ window.addEventListener("scroll", function () {
     // Обновляем значение последней позиции прокрутки
     lastScrollY = currentScrollY;
 });
+
+document.addEventListener('focusin', (event) => {
+    if (event.target.classList.contains('input-output') || event.target.id === 'code-editor') {
+        document.body.style.paddingBottom = '10px'; // Поднимаем всё тело на 10 пикселей
+    }
+});
+
+document.addEventListener('focusout', () => {
+    document.body.style.paddingBottom = '0px'; // Возвращаем всё на место
+});
