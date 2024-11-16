@@ -139,7 +139,6 @@ extraSpace.style.visibility = 'hidden'; // Делаем его невидимы�
 document.body.appendChild(extraSpace);
 
 document.addEventListener('focusin', (event) => {
-    if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
         const element = event.target.closest('.input-output, .CodeMirror');
 
         if (element) {
@@ -157,5 +156,4 @@ document.addEventListener('focusin', (event) => {
                 behavior: 'smooth'
             });
         }
-    }
 });
