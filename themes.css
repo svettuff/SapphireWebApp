@@ -15,7 +15,7 @@ html, body {
     width: 600px;
     max-width: 100%;
     padding: 20px;
-    background-color: #e1e1e1;
+    background-color: #ddd;
     border: 1px solid #ddd;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -71,7 +71,7 @@ html, body {
 }
 
 .topic-button:hover {
-    background-color: #005bb5;
+    background-color: #383b4a;
 }
 
 /* Соединительная линия */
