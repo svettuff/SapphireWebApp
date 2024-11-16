@@ -117,6 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
     editorWrapper.style.fontSize = '17px';
     editorWrapper.style.padding = '2px';
+
+    // Закрытие клавиатуры при прокрутке
+    window.addEventListener("scroll", function () {
+        document.activeElement.blur(); // Закрывает клавиатуру
+    });
+
+    // Прокручивание редактора при фокусе
+    editor.on("focus", function () {
+        setTimeout(() => {
+            editor.scrollIntoView();
+            window.scrollTo(0, editor.getWrapperElement().offsetTop);
+        }, 300);
+    });
 });
-
-
