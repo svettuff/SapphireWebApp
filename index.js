@@ -118,8 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.fontSize = '17px';
     editorWrapper.style.padding = '2px';
 
-    // Закрытие клавиатуры при прокрутке
     window.addEventListener("scroll", function () {
-        document.activeElement.blur(); // Закрывает клавиатуру
+        // Проверяем, прокручивается ли основная страница
+        const scrollY = window.scrollY || window.pageYOffset;
+
+        // Если страница прокручивается (значение scrollY больше 0), убираем фокус
+        if (scrollY > 0) {
+            document.activeElement.blur(); // Снимает фокус, закрывая клавиатуру
+        }
     });
 });
