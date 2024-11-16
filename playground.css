@@ -105,6 +105,10 @@ fieldset {
     color: #ecf0f1;
 }
 
+.CodeMirror-cursor {
+    border-left: 2px solid grey;
+}
+
 .cm-type {
     color: #ff7b72;
 }
