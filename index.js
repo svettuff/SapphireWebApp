@@ -134,25 +134,35 @@ window.addEventListener("scroll", function () {
 });
 
 document.addEventListener('focusin', (event) => {
-    // Проверяем, является ли целевой элемент текстовым полем или редактором кода
-    if (event.target.classList.contains('input-output') || event.target.closest('.CodeMirror')) {
-        // Увеличиваем отступ снизу
-        document.body.style.transition = 'padding-bottom 0.3s ease'; // Плавный переход
-        document.body.style.paddingBottom = '300px'; // Увеличиваем отступ снизу
+    if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
+        const element = event.target.closest('.input-output, .CodeMirror');
 
-        // Прокручиваем целевой элемент в центр
-        setTimeout(() => {
-            if (event.target.classList.contains('input-output')) {
-                event.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else if (event.target.closest('.CodeMirror')) {
-                event.target.closest('.CodeMirror').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (element) {
+            // Получаем размеры и положение элемента
+            const viewportHeight = window.innerHeight;
+            const elementRect = element.getBoundingClientRect();
+            const elementBottom = elementRect.bottom;
+
+            // Вычисляем, сколько нужно добавить пространства, чтобы элемент оказался выше центра
+            const centerPosition = viewportHeight / 2; // Центр экрана
+            const extraSpaceNeeded = elementBottom - centerPosition + 10; // Смещаем элемент чуть выше центра
+
+            if (extraSpaceNeeded > 0) { // Добавляем отступ только если это нужно
+                document.body.style.paddingBottom = `${extraSpaceNeeded}px`;
+
+                // Плавно прокручиваем страницу
+                window.scrollBy({
+                    top: extraSpaceNeeded,
+                    behavior: 'smooth'
+                });
             }
-        }, 100); // Задержка, чтобы отступ применился перед прокруткой
+        }
     }
 });
 
 document.addEventListener('focusout', () => {
-    // Уменьшаем отступ снизу с плавным переходом
-    document.body.style.transition = 'padding-bottom 0.3s ease'; // Плавный переход
-    document.body.style.paddingBottom = '0px'; // Убираем отступ снизу
+    if (window.innerWidth <= 768) { // Проверяем, что устройство мобильное
+        // Убираем добавленный отступ при потере фокуса
+        document.body.style.paddingBottom = '0px';
+    }
 });
