@@ -140,7 +140,7 @@ window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY || window.pageYOffset;
 
     // Проверяем, если разница в прокрутке больше 50 пикселей
-    if (Math.abs(currentScrollY - lastScrollY) > 50) {
+    if (Math.abs(currentScrollY - lastScrollY) > 100) {
         document.activeElement.blur(); // Закрываем клавиатуру
     }
 
