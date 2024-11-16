@@ -137,25 +137,3 @@ const extraSpace = document.createElement('div');
 extraSpace.style.height = '1000px';
 extraSpace.style.visibility = 'hidden'; // Делаем его невидимым
 document.body.appendChild(extraSpace);
-
-document.addEventListener('focusin', (event) => {
-    const element = event.target.closest('.input-output, .CodeMirror');
-
-    if (element && window.visualViewport) {
-        // Используем visualViewport для получения текущей высоты видимой области
-        const viewportHeight = window.visualViewport.height;
-        const elementRect = element.getBoundingClientRect();
-        const elementBottom = elementRect.bottom;
-
-        // Вычисляем, сколько нужно прокрутить, чтобы нижняя часть элемента оказалась на уровне верхней границы клавиатуры
-        const offset = elementBottom - viewportHeight;
-
-        if (offset > 0) {
-            // Прокручиваем страницу, чтобы нижняя часть элемента совпала с верхом клавиатуры
-            window.scrollBy({
-                top: offset,
-                behavior: 'smooth'
-            });
-        }
-    }
-});
