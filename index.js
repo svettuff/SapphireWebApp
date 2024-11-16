@@ -135,12 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
-let isManuallyScrolled = false;
 
-// Обработчик для события прокрутки
 window.addEventListener("scroll", function () {
-    if (!isManuallyScrolled) return; // Если прокрутка вызвана программно, выходим
-
     const currentScrollY = window.scrollY || window.pageYOffset;
 
     // Проверяем, если разница в прокрутке больше 50 пикселей
@@ -152,13 +148,11 @@ window.addEventListener("scroll", function () {
     lastScrollY = currentScrollY;
 });
 
-// Добавляем невидимое дополнительное пространство
 const extraSpace = document.createElement('div');
 extraSpace.style.height = '1000px';
 extraSpace.style.visibility = 'hidden'; // Делаем его невидимым
 document.body.appendChild(extraSpace);
 
-// Обработчик для события фокуса
 document.addEventListener('focusin', (event) => {
     const element = event.target.closest('.input-output, .CodeMirror');
 
@@ -171,23 +165,14 @@ document.addEventListener('focusin', (event) => {
         // Вычисляем позицию, чтобы нижняя часть элемента была в центре экрана
         const scrollPosition = elementBottom - viewportHeight / 2;
 
-        // Устанавливаем флаг, чтобы указать, что прокрутка выполняется программно
-        isManuallyScrolled = true;
-
         // Прокручиваем страницу к нужной позиции
         window.scrollTo({
             top: scrollPosition,
             behavior: 'smooth'
         });
-
-        // Сбрасываем флаг после небольшого таймаута
-        setTimeout(() => {
-            isManuallyScrolled = false;
-        }, 400);
     }
 });
 
-// Обработчик для события потери фокуса
 document.addEventListener('focusout', () => {
     // При потере фокуса ничего не делаем, чтобы не вызывать ненужных артефактов
 });
