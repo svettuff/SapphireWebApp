@@ -120,13 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
+let lastTime = Date.now(); // Время последней проверки
 
 window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY || window.pageYOffset;
+    const currentTime = Date.now(); // Текущее время
 
-    // Проверяем, если разница в прокрутке больше 50 пикселей
-    if (Math.abs(currentScrollY - lastScrollY) > 50) {
+    // Проверяем, если разница в прокрутке больше 50 пикселей ИЛИ прошло более 200 мс
+    if (Math.abs(currentScrollY - lastScrollY) > 50 || (currentTime - lastTime) > 200) {
         document.activeElement.blur(); // Закрываем клавиатуру
+        lastTime = currentTime; // Обновляем время последней проверки
     }
 
     // Обновляем значение последней позиции прокрутки
