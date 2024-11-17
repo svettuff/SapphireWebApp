@@ -60,28 +60,20 @@
 
 async function selectTopic(fileName) {
     try {
-        // Строим путь до файла (например, в папке 'Themes')
         const fileUrl = `Themes/${fileName}`;
 
-        // Загружаем файл с помощью fetch
         const response = await fetch(fileUrl);
 
-        // Проверка успешности ответа
         if (!response.ok) {
             throw new Error(`Error fetching file: ${response.status}`);
         }
 
-        // Получаем содержимое файла в формате текста
         const markdownText = await response.text();
 
-        // Сохраняем ответ в Local Storage
         localStorage.setItem('theme', markdownText);
 
-        // Перенаправляем на страницу playground.html
         window.location.href = 'playground.html';
     } catch (error) {
-        // Если ошибка, показываем сообщение об ошибке
-        responseElement.innerText = `Error: ${error.message}`;
         console.error("Error:", error);
     }
 }
@@ -112,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         theme: 'playground',
     });
 
-    const input = CodeMirror.fromTextArea(document.getElementById('input'), {});
-    const output = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor' });
+    const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), {});
+    const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor' });
 
     // Применение ваших стилей к CodeMirror
     const editorWrapper = editor.getWrapperElement();
@@ -121,18 +113,57 @@ document.addEventListener('DOMContentLoaded', () => {
     editorWrapper.style.fontSize = '17px';
     editorWrapper.style.padding = '2px';
 
-    const inputWrapper = input.getWrapperElement();
+    const inputWrapper = inputEditor.getWrapperElement();
     inputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
     inputWrapper.style.fontSize = '17px';
     inputWrapper.style.padding = '2px';
     inputWrapper.style.height = '50px';
 
-    const outputWrapper = output.getWrapperElement();
+    const outputWrapper = outputEditor.getWrapperElement();
     outputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
     outputWrapper.style.fontSize = '17px';
     outputWrapper.style.padding = '2px';
     outputWrapper.style.height = '150px';
+
+    // Обработка нажатия кнопки "Run"
+    const runButton = document.getElementById('run-button');
+    runButton.addEventListener('click', () => {
+        const code = editor.getValue();
+        let input = inputEditor.getValue();
+
+        // Преобразование ввода: разделение по запятой и объединение с новой строкой
+        input = input.split(',').map(item => item.trim()).join('\n');
+
+        // Параметры для JDoodle API
+        const program = {
+            script: code,
+            language: 'cpp',
+            versionIndex: '0', // Индекс версии языка, '0' соответствует последней версии C++
+            stdin: input,
+            clientId: 'f6adb87bf50d7383396c31266ecd7d6', // Вставьте ваш clientId из JDoodle
+            clientSecret: '7caf36df1f7c98c120bf0a5872ab01cfa93d46474c9b7aaa11b1f3b8c576ca65' // Вставьте ваш clientSecret из JDoodle
+        };
+
+        // Отправка запроса на JDoodle API
+        fetch('https://api.jdoodle.com/v1/execute', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(program)
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    outputEditor.setValue(data.error);
+                } else {
+                    outputEditor.setValue(data.output);
+                }
+            })
+            .catch(error => {
+                outputEditor.setValue('Error: ' + error.message);
+            });
+    });
 });
+
 
 let lastScrollY = 0; // Переменная для отслеживания предыдущей позиции прокрутки
 
