@@ -217,18 +217,27 @@ document.getElementById('modal-overlay').addEventListener('click', function(even
 
 document.getElementById('wallet-button').addEventListener('click', async () => {
     const tonConnectUI = new TonConnectUI({ //connect application
-        manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+        manifestUrl: 'https://svettuff.github.io/SapphireWebApp/tonconnect-manifest.json',
         buttonRootId: 'wallet-button'
     });
 
+    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=the-open-network&vs_currencies=usd');
+    const data = await response.json();
+    const toncoinToUsd = data['the-open-network'].usd; // Курс Toncoin к USD
+
+    // Рассчитываем сумму в Toncoin, эквивалентную 5 долларам
+    const toncoinAmount = 5 / toncoinToUsd; // Сумма в Toncoin
+    const nanotonsAmount = Math.round(toncoinAmount * 1e9); // Переводим в nanotons
+
+    // Создаем транзакцию
     const transaction = {
         messages: [
             {
-                address: "EQABa48hjKzg09hN_HjxOic7r8T1PleIy1dRd8NvZ3922MP0",
-                amount: "1"
+                address: "UQARpcbVsmeIr9vgNGrx57YPq-oMH-Wq7CWq86n5PElf2Phn",
+                amount: nanotonsAmount.toString() // Сумма в nanotons
             }
         ]
-    }
+    };
 
     const result = await tonConnectUI.sendTransaction(transaction)
 });
