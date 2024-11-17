@@ -73,6 +73,20 @@ html, body {
     background-color: #383b4a;
 }
 
+.topic-button.locked {
+    background-color: black;
+    color: #666;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.topic-button.locked::after {
+    content: "🔒"; /* Иконка замка */
+    font-size: 18px;
+    position: absolute;
+    right: 12px;
+}
+
 /* Соединительная линия */
 .connector {
     width: 2px;
@@ -85,4 +99,69 @@ html, body {
 fieldset {
     border: none;
     padding: 0;
+}
+
+/* Стили для затемненного фона */
+.modal-overlay {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+    z-index: 1000; /* Поверх всех элементов */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили для содержимого окна */
+.modal-content {
+    background-color: #44475a; /* Цвет фона окна, как у кнопок */
+    padding: 20px;
+    border-radius: 12px; /* Закругленные углы, как у кнопок */
+    width: 100%; /* Установите ширину в 100% */
+    max-width: 400px; /* Ограничьте максимальную ширину */
+    margin: 0 20px; /* Добавьте горизонтальные отступы для адаптивности */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: white; /* Белый текст */
+    font-family: inherit; /* Та же гарнитура, что и у кнопок */
+    position: relative; /* Для позиционирования крестика */
+}
+
+/* Стили для кнопки закрытия (крестик) */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Стили для кнопок в модальном окне */
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    width: 45%; /* Одинаковая ширина для кнопок */
+    padding: 10px;
+    border: none;
+    border-radius: 12px; /* Закругленные углы, как у кнопок */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #383b4a; /* Цвет фона кнопок */
+    color: white; /* Цвет текста кнопок */
+    transition: background-color 0.2s ease;
+}
+
+.modal-buttons button:hover {
+    background-color: #575b6d; /* Цвет при наведении */
 }

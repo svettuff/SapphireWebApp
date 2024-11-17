@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="themes.css">
 </head>
 <body>
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+        <button class="close-button" onclick="hideModal()">✖</button>
+        <p>
+            <span>Эта тема пока недоступна.</span><br>
+            <span>Стоимость открытия всех тем 5$.</span><br>
+            <span>Это помогает развивать проект.</span><br>
+            <span>Спасибо!</span>
+        </p>
+        <div class="modal-buttons">
+            <button id="card-button">Карта</button>
+            <button id="wallet-more-button">Кошелек</button>
+        </div>
+    </div>
+</div>
 <div class="form-container">
     <form id="courseSelectionForm">
         <!-- Основы -->
@@ -17,19 +32,19 @@
                 <div class="connector"></div>
                 <div class="topic-button" onclick="selectTopic('Типы данных и переменные')">Типы данных и переменные</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Операторы и выражения')">Операторы и выражения</div>
+                <div class="topic-button locked" onclick="selectTopic('Операторы и выражения')">Операторы и выражения</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Константы')">Константы</div>
+                <div class="topic-button locked" onclick="selectTopic('Константы')">Константы</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Ввод и вывод данных')">Ввод и вывод данных</div>
+                <div class="topic-button locked" onclick="selectTopic('Ввод и вывод данных')">Ввод и вывод данных</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Управляющие конструкции')">Управляющие конструкции</div>
+                <div class="topic-button locked" onclick="selectTopic('Управляющие конструкции')">Управляющие конструкции</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Функции')">Функции</div>
+                <div class="topic-button locked" onclick="selectTopic('Функции')">Функции</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Массивы')">Массивы</div>
+                <div class="topic-button locked" onclick="selectTopic('Массивы')">Массивы</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Строки')">Строки</div>
+                <div class="topic-button locked" onclick="selectTopic('Строки')">Строки</div>
             </div>
         </fieldset>
 
@@ -37,13 +52,13 @@
         <fieldset>
             <h3>Указатели и ссылки</h3>
             <div class="topic-button-container">
-                <div class="topic-button" onclick="selectTopic('Введение в указатели')">Введение в указатели</div>
+                <div class="topic-button locked" onclick="selectTopic('Введение в указатели')">Введение в указатели</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Операции с указателями')">Операции с указателями</div>
+                <div class="topic-button locked" onclick="selectTopic('Операции с указателями')">Операции с указателями</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Ссылки')">Ссылки</div>
+                <div class="topic-button locked" onclick="selectTopic('Ссылки')">Ссылки</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Динамическое выделение памяти')">Динамическое выделение памяти</div>
+                <div class="topic-button locked" onclick="selectTopic('Динамическое выделение памяти')">Динамическое выделение памяти</div>
             </div>
         </fieldset>
 
@@ -51,15 +66,15 @@
         <fieldset>
             <h3>ООП</h3>
             <div class="topic-button-container">
-                <div class="topic-button" onclick="selectTopic('ООП (Объектно-Ориентированное Программирование)')">ООП (Объектно-Ориентированное Программирование)</div>
+                <div class="topic-button locked" onclick="selectTopic('ООП (Объектно-Ориентированное Программирование)')">ООП (Объектно-Ориентированное Программирование)</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Классы и объекты')">Классы и объекты</div>
+                <div class="topic-button locked" onclick="selectTopic('Классы и объекты')">Классы и объекты</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Наследование')">Наследование</div>
+                <div class="topic-button locked" onclick="selectTopic('Наследование')">Наследование</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Полиморфизм')">Полиморфизм</div>
+                <div class="topic-button locked" onclick="selectTopic('Полиморфизм')">Полиморфизм</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Инкапсуляция и абстракция')">Инкапсуляция и абстракция</div>
+                <div class="topic-button locked" onclick="selectTopic('Инкапсуляция и абстракция')">Инкапсуляция и абстракция</div>
             </div>
         </fieldset>
 
@@ -67,9 +82,9 @@
         <fieldset>
             <h3>Шаблоны</h3>
             <div class="topic-button-container">
-                <div class="topic-button" onclick="selectTopic('Шаблоны функций')">Шаблоны функций</div>
+                <div class="topic-button locked" onclick="selectTopic('Шаблоны функций')">Шаблоны функций</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Шаблоны классов')">Шаблоны классов</div>
+                <div class="topic-button locked" onclick="selectTopic('Шаблоны классов')">Шаблоны классов</div>
             </div>
         </fieldset>
 
@@ -77,15 +92,15 @@
         <fieldset>
             <h3>Упростит жизнь</h3>
             <div class="topic-button-container">
-                <div class="topic-button" onclick="selectTopic('Стандартная библиотека C++')">Стандартная библиотека C++</div>
+                <div class="topic-button locked" onclick="selectTopic('Стандартная библиотека C++')">Стандартная библиотека C++</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Контейнеры')">Контейнеры</div>
+                <div class="topic-button locked" onclick="selectTopic('Контейнеры')">Контейнеры</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Алгоритмы и итераторы')">Алгоритмы и итераторы</div>
+                <div class="topic-button locked" onclick="selectTopic('Алгоритмы и итераторы')">Алгоритмы и итераторы</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Исключения и обработка ошибок')">Исключения и обработка ошибок</div>
+                <div class="topic-button locked" onclick="selectTopic('Исключения и обработка ошибок')">Исключения и обработка ошибок</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('C++11, C++14, C++17, C++20')">C++11, C++14, C++17, C++20</div>
+                <div class="topic-button locked" onclick="selectTopic('C++11, C++14, C++17, C++20')">C++11, C++14, C++17, C++20</div>
             </div>
         </fieldset>
 
@@ -93,9 +108,9 @@
         <fieldset>
             <h3>Работа с файлами</h3>
             <div class="topic-button-container">
-                <div class="topic-button" onclick="selectTopic('Работа с файлами')">Работа с файлами</div>
+                <div class="topic-button locked" onclick="selectTopic('Работа с файлами')">Работа с файлами</div>
                 <div class="connector"></div>
-                <div class="topic-button" onclick="selectTopic('Потоки ввода/вывода')">Потоки ввода/вывода</div>
+                <div class="topic-button locked" onclick="selectTopic('Потоки ввода/вывода')">Потоки ввода/вывода</div>
             </div>
         </fieldset>
 
@@ -103,7 +118,7 @@
         <fieldset>
             <h3>Многопоточное программирование</h3>
             <div class="topic-button-container">
-                <div class="topic-button" onclick="selectTopic('Многопоточное программирование')">Многопоточное программирование</div>
+                <div class="topic-button locked" onclick="selectTopic('Многопоточное программирование')">Многопоточное программирование</div>
             </div>
         </fieldset>
     </form>

@@ -1,4 +1,10 @@
 async function selectTopic(fileName) {
+    const topicButton = event.target;
+    if (topicButton.classList.contains('locked')) {
+        document.getElementById('modal-overlay').style.display = 'flex';
+        return;
+    }
+
     try {
         const fileUrl = `Themes/${fileName}`;
 
@@ -18,8 +24,15 @@ async function selectTopic(fileName) {
     }
 }
 
+function unlockAllTopics() {
+    const lockedTopics = document.querySelectorAll('.topic-button.locked');
+    lockedTopics.forEach(topic => {
+        topic.classList.remove('locked');
+    });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-    if (!window.location.pathname.includes('playground.html')) {
+    if (window.location.pathname.includes('index.html')) {
         const tg = window.Telegram.WebApp;
 
         const user = tg.initDataUnsafe?.user;
@@ -36,6 +49,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 if (!response.ok) {
                     throw new Error(`HTTP Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const userExists = data.exists;
+
+                if (!userExists) {
+                    unlockAllTopics();
                 }
             } catch (error) {
                 console.error("Error:", error);
@@ -151,7 +171,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-
 let lastScrollY = 0;
 
 window.addEventListener("scroll", function () {
@@ -189,3 +208,7 @@ document.addEventListener('focusin', (event) => {
 document.addEventListener('focusout', () => {
 
 });
+
+function hideModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+}
