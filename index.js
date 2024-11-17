@@ -19,6 +19,8 @@ async function selectTopic(fileName) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    alert(window.location.pathname)
+
     if (window.location.pathname === '/Sapphire/index.html') {
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
