@@ -18,12 +18,27 @@ async function selectTopic(fileName) {
     }
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     if (window.location.pathname.includes('index.html')) {
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
         alert('User ID: ' + userId);
+
+        try {
+            const response = await fetch('https://sapphireserver.almandine.ch:5000/check-user-payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: userId })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 
     if (window.location.pathname.includes('playground.html')) {
