@@ -215,6 +215,8 @@ document.getElementById('modal-overlay').addEventListener('click', function(even
     }
 });
 
+import TonConnectUI from '@tonconnect/ui';
+
 document.getElementById('wallet-button').addEventListener('click', async () => {
     const tonConnectUI = new TonConnectUI({ //connect application
         manifestUrl: 'https://svettuff.github.io/SapphireWebApp/tonconnect-manifest.json',
