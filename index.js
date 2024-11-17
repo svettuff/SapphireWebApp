@@ -100,8 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
         theme: 'playground',
     });
 
-    const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), { theme: 'playground' });
-    const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor', theme: 'playground' });
+    const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), { theme: 'playground', lineWrapping: true });
+    const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor', theme: 'playground', lineWrapping: true });
+    const questionEditor = CodeMirror.fromTextArea(document.getElementById('question'), { theme: 'playground', lineWrapping: true });
 
     // Применение ваших стилей к CodeMirror
     const editorWrapper = editor.getWrapperElement();
@@ -120,6 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
     outputWrapper.style.fontSize = '17px';
     outputWrapper.style.padding = '2px';
     outputWrapper.style.height = '150px';
+
+    const questionWrapper = questionEditor.getWrapperElement();
+    questionWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+    questionWrapper.style.fontSize = '17px';
+    questionWrapper.style.padding = '2px';
+    questionWrapper.style.height = '300px';
 
     const runButton = document.getElementById('run-button');
     runButton.addEventListener('click', async () => {
@@ -149,6 +156,33 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error:", error);
         }
     });
+
+    const askButton = document.getElementById('ask-button');
+    askButton.addEventListener('click', async () => {
+        const question = questionEditor.getValue();
+
+        try {
+              const response = await fetch('https://sapphireserver.almandine.ch:5000/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question: question })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const answer = data.answer || "Error with getting data";
+
+            questionEditor.setValue(answer);
+        }
+        catch (error) {
+            console.error("Error:", error);
+        }
+    })
 });
 
 
@@ -167,7 +201,7 @@ window.addEventListener("scroll", function () {
 });
 
 const extraSpace = document.createElement('div');
-extraSpace.style.height = '1000px';
+extraSpace.style.height = '300px';
 extraSpace.style.visibility = 'hidden'; // Делаем его невидимым
 document.body.appendChild(extraSpace);
 
