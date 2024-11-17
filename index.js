@@ -210,5 +210,7 @@ document.addEventListener('focusout', () => {
 });
 
 function hideModal() {
+    event.preventDefault(); // Предотвращает поведение по умолчанию
+    event.target.blur();
     document.getElementById('modal-overlay').style.display = 'none';
 }
