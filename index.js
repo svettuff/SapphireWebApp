@@ -214,3 +214,21 @@ document.getElementById('modal-overlay').addEventListener('click', function(even
         document.getElementById('modal-overlay').style.display = 'none';
     }
 });
+
+document.getElementById('wallet-button').addEventListener('click', async () => {
+    const tonConnectUI = new TonConnectUI({ //connect application
+        manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+        buttonRootId: 'wallet-button'
+    });
+
+    const transaction = {
+        messages: [
+            {
+                address: "EQABa48hjKzg09hN_HjxOic7r8T1PleIy1dRd8NvZ3922MP0",
+                amount: "1"
+            }
+        ]
+    }
+
+    const result = await tonConnectUI.sendTransaction(transaction)
+});
