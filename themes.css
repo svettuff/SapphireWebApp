@@ -140,6 +140,7 @@ fieldset {
     font-size: 20px;
     color: white;
     cursor: pointer;
+    -webkit-box-shadow: none;
     -webkit-tap-highlight-color: transparent;
 }
 
