@@ -139,6 +139,10 @@ fieldset {
     border: none;
     font-size: 20px;
     color: white;
+    user-select: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
 }
 
 /* Стили для кнопок в модальном окне */
