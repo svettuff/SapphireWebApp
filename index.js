@@ -221,20 +221,12 @@ document.getElementById('wallet-button').addEventListener('click', async () => {
         buttonRootId: 'wallet-button'
     });
 
-    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=the-open-network&vs_currencies=usd');
-    const data = await response.json();
-    const toncoinToUsd = data['the-open-network'].usd; // Курс Toncoin к USD
-
-    // Рассчитываем сумму в Toncoin, эквивалентную 5 долларам
-    const toncoinAmount = 5 / toncoinToUsd; // Сумма в Toncoin
-    const nanotonsAmount = Math.round(toncoinAmount * 1e9); // Переводим в nanotons
-
     // Создаем транзакцию
     const transaction = {
         messages: [
             {
                 address: "UQARpcbVsmeIr9vgNGrx57YPq-oMH-Wq7CWq86n5PElf2Phn",
-                amount: nanotonsAmount.toString() // Сумма в nanotons
+                amount: "20000000" // Сумма в nanotons
             }
         ]
     };
