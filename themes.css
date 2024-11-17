@@ -139,11 +139,8 @@ fieldset {
     border: none;
     font-size: 20px;
     color: white;
-}
-
-.close-button:active {
-    background-color: transparent; /* Убирает фон при активном состоянии */
-    outline: none; /* Убирает обводку при активном состоянии */
+    width: 10px;
+    height: 10px;
 }
 
 /* Стили для кнопок в модальном окне */
