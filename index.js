@@ -19,15 +19,13 @@ async function selectTopic(fileName) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    alert(window.location.pathname)
-
-    if (window.location.pathname === '/Sapphire/index.html') {
+    if (window.location.pathname === '/SapphireWebApp/index.html') {
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
         alert('User ID: ' + userId);
     }
 
-    if (window.location.pathname === '/Sapphire/playground.html') {
+    if (window.location.pathname === '/SapphireWebApp/playground.html') {
         const responseElement = document.getElementById('response-text');
 
         const responseText = localStorage.getItem('theme');
