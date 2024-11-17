@@ -130,19 +130,6 @@ fieldset {
     position: relative; /* Для позиционирования крестика */
 }
 
-/* Стили для кнопки закрытия (крестик) */
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: white;
-    width: 10px;
-    height: 10px;
-}
-
 /* Стили для кнопок в модальном окне */
 .modal-buttons {
     display: flex;

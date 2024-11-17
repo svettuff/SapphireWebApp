@@ -209,6 +209,8 @@ document.addEventListener('focusout', () => {
 
 });
 
-function hideModal() {
-    document.getElementById('modal-overlay').style.display = 'none';
-}
+document.getElementById('modal-overlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        document.getElementById('modal-overlay').style.display = 'none';
+    }
+});
