@@ -20,24 +20,26 @@ async function selectTopic(fileName) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     if (!window.location.pathname.includes('playground.html')) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const userId = urlParams.get('user_id');
-        alert('User ID: ' + userId);
+        const tg = window.Telegram.WebApp;
 
-        try {
-            const response = await fetch('https://sapphireserver.almandine.ch:5000/check-user-payment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id: userId })
-            });
+        const user = tg.initDataUnsafe?.user;
+        if(user)
+        {
+            try {
+                const response = await fetch('https://sapphireserver.almandine.ch:5000/check-user-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: user })
+                });
 
-            if (!response.ok) {
-                throw new Error(`HTTP Error: ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+            } catch (error) {
+                console.error("Error:", error);
             }
-        } catch (error) {
-            console.error("Error:", error);
         }
     }
 
