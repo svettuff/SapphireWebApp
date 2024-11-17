@@ -36,15 +36,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const tg = window.Telegram.WebApp;
 
         const user = tg.initDataUnsafe?.user;
-        if(user)
-        {
+        if (user) {
             try {
                 const response = await fetch('https://sapphireserver.almandine.ch:5000/check-user-payment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ id: user })
+                    body: JSON.stringify({id: user})
                 });
 
                 if (!response.ok) {
@@ -215,21 +214,19 @@ document.getElementById('modal-overlay').addEventListener('click', function(even
     }
 });
 
-import TonConnectUI from '@tonconnect/ui';
 
 document.getElementById('wallet-button').addEventListener('click', async () => {
-    const tonConnectUI = new TonConnectUI({ //connect application
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({ //connect application
         manifestUrl: 'https://svettuff.github.io/SapphireWebApp/tonconnect-manifest.json',
         buttonRootId: 'wallet-button'
-    });
+          });
 
-    // Создаем транзакцию
     const transaction = {
         messages: [
-            {
+                  {
                 address: "UQARpcbVsmeIr9vgNGrx57YPq-oMH-Wq7CWq86n5PElf2Phn",
                 amount: "20000000" // Сумма в nanotons
-            }
+                      }
         ]
     };
 
