@@ -19,7 +19,7 @@ async function selectTopic(fileName) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (window.location.pathname.includes('index.html')) {
+    if (!window.location.pathname.includes('playground.html')) {
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
         alert('User ID: ' + userId);
