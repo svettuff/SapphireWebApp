@@ -81,14 +81,11 @@ async function selectTopic(fileName) {
 document.addEventListener('DOMContentLoaded', () => {
     const responseElement = document.getElementById('response-text');
 
-    // Получаем ответ из Local Storage
     const responseText = localStorage.getItem('theme');
 
     if (responseText) {
-        // Преобразуем текст с Markdown в HTML
         responseElement.innerHTML = marked.parse(responseText);
 
-        // Подсвечиваем синтаксис C++ в коде
         const codeBlocks = responseElement.querySelectorAll('pre code');
         codeBlocks.forEach((block) => {
             hljs.highlightElement(block);
@@ -97,15 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
         responseElement.innerText = "No theme.";
     }
 
-    // Инициализация редактора CodeMirror
     const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-        mode: 'text/x-c++src', // Подсветка для C++
-        matchBrackets: true,   // Подсветка скобок
+        mode: 'text/x-c++src',
+        matchBrackets: true,
         theme: 'playground',
     });
 
-    const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), {});
-    const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor' });
+    const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), { theme: 'playground' });
+    const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor', theme: 'playground' });
 
     // Применение ваших стилей к CodeMirror
     const editorWrapper = editor.getWrapperElement();
@@ -125,42 +121,33 @@ document.addEventListener('DOMContentLoaded', () => {
     outputWrapper.style.padding = '2px';
     outputWrapper.style.height = '150px';
 
-    // Обработка нажатия кнопки "Run"
     const runButton = document.getElementById('run-button');
-    runButton.addEventListener('click', () => {
+    runButton.addEventListener('click', async () => {
         const code = editor.getValue();
         let input = inputEditor.getValue();
-
-        // Преобразование ввода: разделение по запятой и объединение с новой строкой
         input = input.split(',').map(item => item.trim()).join('\n');
 
-        // Параметры для JDoodle API
-        const program = {
-            script: code,
-            language: 'cpp',
-            versionIndex: '0', // Индекс версии языка, '0' соответствует последней версии C++
-            stdin: input,
-            clientId: 'f6adb87bf50d7383396c31266ecd7d6', // Вставьте ваш clientId из JDoodle
-            clientSecret: '7caf36df1f7c98c120bf0a5872ab01cfa93d46474c9b7aaa11b1f3b8c576ca65' // Вставьте ваш clientSecret из JDoodle
-        };
-
-        // Отправка запроса на JDoodle API
-        fetch('https://api.jdoodle.com/v1/execute', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(program)
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    outputEditor.setValue(data.error);
-                } else {
-                    outputEditor.setValue(data.output);
-                }
-            })
-            .catch(error => {
-                outputEditor.setValue('Error: ' + error.message);
+        try {
+            const response = await fetch('https://sapphireserver.almandine.ch:5000/execute_cpp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code: code, input: input })
             });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const output = data.output || "Error with executing code";
+
+            outputEditor.setValue(output);
+        } catch (error) {
+            outputEditor.setValue(`Error: ${error.message}`);
+            console.error("Error:", error);
+        }
     });
 });
 
