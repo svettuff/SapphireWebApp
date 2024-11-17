@@ -18,14 +18,15 @@ async function selectTopic(fileName) {
     }
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname === '/SapphireWebApp/index.html') {
+    if (window.location.pathname.includes('index.html')) {
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
         alert('User ID: ' + userId);
     }
 
-    if (window.location.pathname === '/SapphireWebApp/playground.html') {
+    if (window.location.pathname.includes('playground.html')) {
         const responseElement = document.getElementById('response-text');
 
         const responseText = localStorage.getItem('theme');
