@@ -210,5 +210,6 @@ document.addEventListener('focusout', () => {
 });
 
 function hideModal() {
+    event.target.blur();
     document.getElementById('modal-overlay').style.display = 'none';
 }
