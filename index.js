@@ -224,8 +224,13 @@ async function createPaymentLink() {
 
         const data = await response.json();
         if (data.invoiceLink) {
-            // Открываем ссылку на оплату в новом окне
-            window.open(data.invoiceLink, "_blank");
+            // Используем Telegram WebApp API для открытия ссылки внутри Telegram
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.openLink(data.invoiceLink);
+            } else {
+                // Открываем в новом окне, если WebApp API недоступен
+                window.open(data.invoiceLink, "_blank");
+            }
         } else {
             console.error("Ошибка при создании платёжной ссылки:", data.error);
         }
