@@ -32,7 +32,7 @@ function unlockAllTopics() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (window.location.pathname.includes('index.html')) {
+    if (!window.location.pathname.includes('playground.html')) {
         const tg = window.Telegram.WebApp;
 
         const user = tg.initDataUnsafe?.user;
