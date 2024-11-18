@@ -31,35 +31,40 @@ function unlockAllTopics() {
     });
 }
 
+async function checkUserPayment()
+{
+    const tg = window.Telegram.WebApp;
+
+    const user = tg.initDataUnsafe?.user;
+    if (user) {
+        try {
+            const response = await fetch('https://sapphireserver.almandine.ch:443/check-user-payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id: user})
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const userExists = data.exists;
+
+            if (!userExists) {
+                unlockAllTopics();
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     if (!window.location.pathname.includes('playground.html')) {
-        const tg = window.Telegram.WebApp;
-
-        const user = tg.initDataUnsafe?.user;
-        if (user) {
-            try {
-                const response = await fetch('https://sapphireserver.almandine.ch:443/check-user-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({id: user})
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP Error: ${response.status}`);
-                }
-
-                const data = await response.json();
-                const userExists = data.exists;
-
-                if (!userExists) {
-                    unlockAllTopics();
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        }
+        await checkUserPayment();
     }
 
     if (window.location.pathname.includes('playground.html')) {
@@ -227,6 +232,14 @@ async function createPaymentLink() {
             // Используем Telegram WebApp API для открытия ссылки внутри Telegram
             if (window.Telegram && window.Telegram.WebApp) {
                 window.Telegram.WebApp.openInvoice(data.invoiceLink);
+
+                // Подписываемся на событие закрытия инвойса
+                window.Telegram.WebApp.onEvent('invoiceClosed', async (event) => {
+                    if (event.isClosed) {
+                        document.getElementById('modal-overlay').style.display = 'none';
+                        await checkUserPayment();
+                    }
+                });
             } else {
                 // Открываем в новом окне, если WebApp API недоступен
                 window.open(data.invoiceLink, "_blank");
