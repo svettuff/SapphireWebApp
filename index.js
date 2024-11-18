@@ -30,9 +30,8 @@ async function selectTopic(fileName)
 
         const markdownText = await response.text();
         localStorage.setItem('theme', markdownText);
-        const currentUrl = window.location.href;
 
-        if (currentUrl.includes('topicsRU.html'))
+        if (window.location.pathname.includes('topicsRU.html'))
         {
             window.location.href = 'playgroundRU.html';
         } else
