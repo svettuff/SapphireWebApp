@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Курс Sapphire C++</title>
+  <link rel="stylesheet" href="themes.css">
+</head>
+<body>
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-content">
+    <p>
+      <span>Стоимость доступа ко всем темам: 250⭐</span><br>
+      <span>Это поддерживает проект.</span><br>
+      <span>Спасибо!</span>
+    </p>
+    <div class="modal-buttons">
+      <button id="wallet-button">Оплатить</button>
+    </div>
+  </div>
+</div>
+<div class="form-container">
+  <form id="courseSelectionForm">
+    <fieldset>
+      <h3>Основы</h3>
+      <div class="topic-button-container">
+        <div class="topic-button" onclick="selectTopic('introduction.md')">Введение в C++</div>
+        <div class="connector"></div>
+        <div class="topic-button" onclick="selectTopic('dataTypesAndVariables.md')">Типы данных и переменные</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Операторы и выражения</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Константы</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Ввод и вывод</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Управляющие структуры</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Функции</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Массивы</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Строки</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <h3>Указатели и ссылки</h3>
+      <div class="topic-button-container">
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Введение в указатели</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Операции с указателями</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Ссылки</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Динамическое выделение памяти</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <h3>ООП</h3>
+      <div class="topic-button-container">
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">ООП (Объектно-ориентированное программирование)</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Классы и объекты</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Наследование</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Полиморфизм</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Инкапсуляция и абстракция</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <h3>Шаблоны</h3>
+      <div class="topic-button-container">
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Шаблоны функций</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Шаблоны классов</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <h3>Упростит жизнь</h3>
+      <div class="topic-button-container">
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Стандартная библиотека C++</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Контейнеры</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Алгоритмы и итераторы</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Исключения и обработка ошибок</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">C++11, C++14, C++17, C++20</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <h3>Работа с файлами</h3>
+      <div class="topic-button-container">
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Работа с файлами</div>
+        <div class="connector"></div>
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Потоки ввода/вывода</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <h3>Многопоточное программирование</h3>
+      <div class="topic-button-container">
+        <div class="topic-button locked" onclick="selectTopic('temp.md')">Многопоточное программирование</div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
