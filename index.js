@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
 
                 const data = await response.json();
-                const output = data.output || "Error with executing code";
+                const output = data.output;
                 outputEditor.setValue(output);
             }
             catch (error)
