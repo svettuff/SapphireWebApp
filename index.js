@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const user = tg.initDataUnsafe?.user;
         if (user) {
             try {
-                const response = await fetch('https://sapphireserver.almandine.ch:5000/check-user-payment', {
+                const response = await fetch('https://sapphireserver.almandine.ch:443/check-user-payment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             input = input.split(',').map(item => item.trim()).join('\n');
 
             try {
-                const response = await fetch('https://sapphireserver.almandine.ch:5000/execute_cpp', {
+                const response = await fetch('https://sapphireserver.almandine.ch:443/execute_cpp', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const question = questionEditor.getValue();
 
             try {
-                const response = await fetch('https://sapphireserver.almandine.ch:5000/ask', {
+                const response = await fetch('https://sapphireserver.almandine.ch:443/ask', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -216,7 +216,7 @@ document.getElementById('modal-overlay').addEventListener('click', function(even
 
 async function createPaymentLink() {
     try {
-        const response = await fetch('https://sapphireserver.almandine.ch:5000/generate-invoice', {
+        const response = await fetch('https://sapphireserver.almandine.ch:443/generate-invoice', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({})
