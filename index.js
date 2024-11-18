@@ -114,53 +114,6 @@ async function createPaymentLink()
 
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
-let lastScrollY = 0;
-
-window.addEventListener("scroll", function () {
-    const currentScrollY = window.scrollY || window.pageYOffset;
-
-    if (Math.abs(currentScrollY - lastScrollY) > 50)
-    {
-        document.activeElement.blur();
-    }
-
-    lastScrollY = currentScrollY;
-});
-
-const extraSpace = document.createElement('div');
-extraSpace.style.height = '300px';
-extraSpace.style.visibility = 'hidden';
-document.body.appendChild(extraSpace);
-
-document.addEventListener('focusin', (event) => {
-    const element = event.target.closest('.input-output, .CodeMirror');
-
-    if (element)
-    {
-        const viewportHeight = window.innerHeight;
-        const elementRect = element.getBoundingClientRect();
-        const elementBottom = elementRect.bottom + window.scrollY;
-        const scrollPosition = elementBottom - viewportHeight / 2;
-
-        window.scrollTo(
-            {
-            top: scrollPosition,
-            behavior: 'smooth'
-        });
-    }
-});
-
-document.getElementById("wallet-button").addEventListener("click", createPaymentLink);
-
-document.addEventListener('focusout', () => {});
-
-document.getElementById('modal-overlay').addEventListener('click', function(event) {
-    if (event.target === this)
-    {
-        document.getElementById('modal-overlay').style.display = 'none';
-    }
-});
-
 document.addEventListener('DOMContentLoaded', async () => {
     if (!window.location.pathname.includes('playground.html'))
     {
@@ -278,5 +231,52 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error("Error:", error);
             }
         })
+    }
+});
+
+let lastScrollY = 0;
+
+window.addEventListener("scroll", function () {
+    const currentScrollY = window.scrollY || window.pageYOffset;
+
+    if (Math.abs(currentScrollY - lastScrollY) > 50)
+    {
+        document.activeElement.blur();
+    }
+
+    lastScrollY = currentScrollY;
+});
+
+const extraSpace = document.createElement('div');
+extraSpace.style.height = '300px';
+extraSpace.style.visibility = 'hidden';
+document.body.appendChild(extraSpace);
+
+document.addEventListener('focusin', (event) => {
+    const element = event.target.closest('.input-output, .CodeMirror');
+
+    if (element)
+    {
+        const viewportHeight = window.innerHeight;
+        const elementRect = element.getBoundingClientRect();
+        const elementBottom = elementRect.bottom + window.scrollY;
+        const scrollPosition = elementBottom - viewportHeight / 2;
+
+        window.scrollTo(
+            {
+            top: scrollPosition,
+            behavior: 'smooth'
+        });
+    }
+});
+
+document.addEventListener('focusout', () => {});
+
+document.getElementById("wallet-button").addEventListener("click", createPaymentLink);
+
+document.getElementById('modal-overlay').addEventListener('click', function(event) {
+    if (event.target === this)
+    {
+        document.getElementById('modal-overlay').style.display = 'none';
     }
 });
