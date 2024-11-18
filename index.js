@@ -34,7 +34,8 @@ async function selectTopic(fileName)
         if (window.location.pathname.includes('topicsRU.html'))
         {
             window.location.href = 'playgroundRU.html';
-        } else
+        }
+        else
         {
             window.location.href = 'playground.html';
         }
@@ -122,7 +123,7 @@ async function createPaymentLink()
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (!window.location.pathname.includes('playground.html') || !window.location.pathname.includes('playgroundRU.html'))
+    if (!window.location.pathname.includes('playground.html') && !window.location.pathname.includes('playgroundRU.html'))
     {
         await checkUserPayment();
     }
