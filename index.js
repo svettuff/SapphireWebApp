@@ -122,12 +122,12 @@ async function createPaymentLink()
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (!window.location.pathname.includes('playground.html'))
+    if (!window.location.pathname.includes('playground.html') || !window.location.pathname.includes('playgroundRU.html'))
     {
         await checkUserPayment();
     }
 
-    if (window.location.pathname.includes('playground.html'))
+    if (window.location.pathname.includes('playground.html') || window.location.pathname.includes('playgroundRU.html'))
     {
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
