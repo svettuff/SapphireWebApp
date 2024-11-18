@@ -87,7 +87,7 @@ fieldset {
 }
 
 .run-button {
-    width: 100%; /* Попробуйте уменьшить ширину или добавить отступы */
+    width: 100%;
     padding: 12px;
     font-size: 17px;
     font-weight: 600;
@@ -109,13 +109,11 @@ fieldset {
     border: none;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden; /* Hide overflow */
+    overflow: hidden;
     white-space: pre-wrap;
     resize: none;
-
-    display: flex; /* Use flexbox to align content */
+    display: flex;
     justify-content: center;
-
     background-color: #44475a;
     color: #f8f8f2;
     border-radius: 4px;
@@ -125,7 +123,7 @@ fieldset {
 }
 
 .input-output:focus {
-    outline: none; /* Remove focus outline */
+    outline: none;
 }
 
 .code-editor-container {
