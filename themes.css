@@ -112,7 +112,8 @@ fieldset {
     background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
     z-index: 1000; /* Поверх всех элементов */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 50%;
 }
 
 /* Стили для содержимого окна */
