@@ -226,7 +226,7 @@ async function createPaymentLink() {
         if (data.invoiceLink) {
             // Используем Telegram WebApp API для открытия ссылки внутри Telegram
             if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.openLink(data.invoiceLink);
+                window.Telegram.WebApp.openInvoice(data.invoiceLink);
             } else {
                 // Открываем в новом окне, если WebApp API недоступен
                 window.open(data.invoiceLink, "_blank");
