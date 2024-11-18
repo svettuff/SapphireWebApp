@@ -53,7 +53,7 @@ async function checkUserPayment()
             const data = await response.json();
             const userExists = data.exists;
 
-            if (!userExists) {
+            if (userExists) {
                 unlockAllTopics();
             }
         } catch (error) {
