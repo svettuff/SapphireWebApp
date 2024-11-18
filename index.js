@@ -214,21 +214,26 @@ document.getElementById('modal-overlay').addEventListener('click', function(even
     }
 });
 
+async function createPaymentLink() {
+    try {
+        const response = await fetch('https://sapphireserver.almandine.ch:5000/generate-invoice', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({})
+        });
 
-document.getElementById('wallet-button').addEventListener('click', async () => {
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({ //connect application
-        manifestUrl: 'https://svettuff.github.io/SapphireWebApp/tonconnect-manifest.json',
-        buttonRootId: 'wallet-button'
-          });
+        const data = await response.json();
+        if (data.invoiceLink) {
+            // Открываем ссылку на оплату в новом окне
+            window.open(data.invoiceLink, "_blank");
+        } else {
+            console.error("Ошибка при создании платёжной ссылки:", data.error);
+        }
+    } catch (error) {
+        console.error("Ошибка при выполнении запроса:", error);
+    }
+}
 
-    const transaction = {
-        messages: [
-                  {
-                address: "UQARpcbVsmeIr9vgNGrx57YPq-oMH-Wq7CWq86n5PElf2Phn",
-                amount: "20000000" // Сумма в nanotons
-                      }
-        ]
-    };
 
-    const result = await tonConnectUI.sendTransaction(transaction)
-});
+// Пример вызова функции при нажатии на кнопку
+document.getElementById("wallet-button").addEventListener("click", createPaymentLink);
