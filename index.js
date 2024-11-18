@@ -237,7 +237,7 @@ async function createPaymentLink() {
                 window.Telegram.WebApp.onEvent('invoiceClosed', async (event) => {
                     if (event.isClosed) {
                         document.getElementById('modal-overlay').style.display = 'none';
-                        //await checkUserPayment();
+                        await checkUserPayment();
                     }
                 });
             } else {
