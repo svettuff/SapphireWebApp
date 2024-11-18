@@ -122,12 +122,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (window.location.pathname.includes('playground.html'))
     {
-        const tg = window.Telegram.WebApp;
-        tg.BackButton.show();
-        tg.BackButton.onClick(() => {
-            window.location.href = 'index.html';
-        });
-
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
 
