@@ -141,7 +141,6 @@ fieldset {
 .CodeMirror {
     background-color: #44475a !important;
     color: #ecf0f1;
-    overflow: auto;
 }
 
 .CodeMirror-cursor {
