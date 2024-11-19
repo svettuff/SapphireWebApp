@@ -1,7 +1,7 @@
 ﻿## Input and Output in C++: Using `std::cin` and `std::cout`
 In C++, standard input and output streams are used to interact with the user. With `std::cin` and `std::cout`, you can read data from the keyboard and output data to the screen. To use them, be sure to include the `#include <iostream>` library.
 
-### Output: `std::cout`
+### Output:
 `std::cout` is used to output information to the screen. The `<<` operator sends data to the output stream.
 
 **Syntax:**
@@ -22,7 +22,7 @@ int main() {
 
 `std::endl` – A special symbol that moves the cursor to a new line.
 
-### Input: `std::cin`
+### Input:
 `std::cin` is used to read data from the keyboard. The `>>` operator reads data from the input stream.
 
 **Syntax:**
