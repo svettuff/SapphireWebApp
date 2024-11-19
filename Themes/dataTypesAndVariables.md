@@ -3,7 +3,7 @@
 
 The C++ programming language has several basic data types used for storing different kinds of information. Their availability is very useful since programming is essentially about working with data. Here are the main ones:
 
-1. **int** – Integer Data Type
+**int** – Integer Data Type
 
 Used to store whole numbers (e.g., -3, 0, 42).
 
@@ -12,7 +12,7 @@ Used to store whole numbers (e.g., -3, 0, 42).
 int age = 25;
 ```
 
-2. **float** – Floating Point Data Type
+**float** – Floating Point Data Type
 
 Used to store fractional numbers with limited precision.
 
@@ -21,7 +21,7 @@ Used to store fractional numbers with limited precision.
 float height = 5.9;
 ```
 
-3. **double** – Double Precision Floating Point Data Type
+**double** – Double Precision Floating Point Data Type
 
 Suitable for storing fractional numbers with greater precision than float.
 
@@ -30,7 +30,7 @@ Suitable for storing fractional numbers with greater precision than float.
 double pi = 3.141592653589793;
 ```
 
-4. **char** – Character Data Type
+**char** – Character Data Type
 
 Used to store a single character enclosed in single quotes.
 
@@ -39,7 +39,7 @@ Used to store a single character enclosed in single quotes.
 char letter = 'A';
 ```
 
-5. **bool** – Boolean Data Type
+**bool** – Boolean Data Type
 
 Stores a logical value: `true` or `false`.
 
