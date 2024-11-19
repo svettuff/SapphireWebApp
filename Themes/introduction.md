@@ -1,5 +1,9 @@
 ﻿## Introduction to C++ – An Overview of the Language, What It Is, and Where It Is Used
 
+Welcome to the C++ programming language course! This course is created with love and dedication; I have done my best to infuse it with all the experience and knowledge I've gathered over the years.
+
+I especially want to draw your attention to the AI assistant available at the end of each page. If anything is unclear, feel free to describe your problem to it. This is the main feature of the course, designed to make your learning journey lively and engaging, helping you to truly understand the essence of the language on a deeper level.
+
 ### What is C++?
 C++ is one of the most popular and powerful programming languages. It was created in the early 1980s by Bjarne Stroustrup as an extension of the C language.
 
