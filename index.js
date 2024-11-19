@@ -123,11 +123,6 @@ async function createPaymentLink()
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (!window.location.pathname.includes('playground.html') && !window.location.pathname.includes('playgroundRU.html'))
-    {
-        await checkUserPayment();
-    }
-
     if (window.location.pathname.includes('playground.html') || window.location.pathname.includes('playgroundRU.html'))
     {
         const responseElement = document.getElementById('response-text');
@@ -239,6 +234,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error("Error:", error);
             }
         })
+    }
+    else
+    {
+        await checkUserPayment();
     }
 });
 
