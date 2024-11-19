@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), { theme: 'playground', lineWrapping: true });
         const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor', theme: 'playground', lineWrapping: true });
-        const questionEditor = CodeMirror.fromTextArea(document.getElementById('question'), { theme: 'playground', lineWrapping: true });
+        const questionEditor = CodeMirror.fromTextArea(document.getElementById('question'), { theme: 'playground', lineWrapping: true, indentWithTabs: false, indentUnit: 0 });
 
         const editorWrapper = editor.getWrapperElement();
         editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
