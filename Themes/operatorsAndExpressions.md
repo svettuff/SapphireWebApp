@@ -115,4 +115,4 @@ bool logicResult = (a < b) && (b > c); // Result: true
 ```
 
 ### Task
-Write a program that asks the user for two integers and performs all arithmetic operations on them, as well as checks which number is greater or smaller.
+Write a program that asks the user for two integers and performs all arithmetic operations on them.
