@@ -134,13 +134,14 @@ fieldset {
     font-family: "Courier New", Courier, monospace;
     font-size: 14px;
     line-height: 1.6;
-    overflow-x: auto;
+    overflow: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .CodeMirror {
     background-color: #44475a !important;
     color: #ecf0f1;
+    overflow: auto;
 }
 
 .CodeMirror-cursor {
