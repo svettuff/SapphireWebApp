@@ -50,7 +50,7 @@ async function checkUserPayment()
 {
     const tg = window.Telegram.WebApp;
 
-    const user = tg.initDataUnsafe?.user;
+    const user = tg.initData.user;
     if (user)
     {
         try
