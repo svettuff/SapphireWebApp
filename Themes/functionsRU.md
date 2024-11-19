@@ -43,7 +43,7 @@ int main() {
 **Пример:**
 ```cpp
 void printMessage() {
-    std::cout << "Привет, мир!" << endl;
+    std::cout << "Привет, мир!" << std::endl;
 }
 
 int main() {

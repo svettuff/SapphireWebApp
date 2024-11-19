@@ -15,7 +15,7 @@ std::cout << "Текст для вывода";
 
 int main() {
     std::cout << "Привет, мир!" << std::endl; // Выводит текст и переводит строку
-    std::cout << "Это пример вывода с помощью std::cout." << endl;
+    std::cout << "Это пример вывода с помощью std::cout." << std::endl;
 return 0;
 }
 ```
@@ -38,7 +38,7 @@ int main() {
     int age;
     std::cout << "Введите ваш возраст: ";
     std::cin >> age; // Считывает значение и сохраняет в переменной age
-    std::cout << "Ваш возраст: " << age << " лет." << endl;
+    std::cout << "Ваш возраст: " << age << " лет." << std::endl;
     return 0;
 }
 ```
