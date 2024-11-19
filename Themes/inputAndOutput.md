@@ -1,4 +1,4 @@
-﻿## Input and Output in C++: Using `std::cin` and `std::cout`
+﻿## Input and Output in C++
 In C++, standard input and output streams are used to interact with the user. With `std::cin` and `std::cout`, you can read data from the keyboard and output data to the screen. To use them, be sure to include the `#include <iostream>` library.
 
 ### Output:
