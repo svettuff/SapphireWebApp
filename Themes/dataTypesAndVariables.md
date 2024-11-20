@@ -55,6 +55,9 @@ Variables in C++ are named memory locations used to store data. When declaring a
 data_type variable_name = value;
 ```
 
+Never declare a variable without initializing it. For example, instead of writing `int a;`, it’s better to write `int a = 0;` if you don’t yet know what value it should have or plan to assign it later. If you leave the variable uninitialized, it will contain so-called "garbage."
+In the next topic, where we’ll discuss data output, you can check how the program perceives such an "empty" variable by trying to output it. Always initialize your variables — this will save you from many potential errors.
+
 ### Naming Variables
 The variable name must start with a letter (Latin) or an underscore (_) and can contain digits.
 Variable names are case-sensitive, meaning `Age` and `age` are different variables.
