@@ -1,1 +1,1 @@
-﻿## All topics will be available soon on 22.11.2024
+﻿## This topic will be available on 27.11.2024
