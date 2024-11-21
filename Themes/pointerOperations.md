@@ -103,7 +103,7 @@ int main() {
 
 This will be covered in more detail in the topic of dynamic memory allocation. Essentially, a function can return not just a variable but a pointer, similar to what we discussed in the functions topic.
 
-## Task
+### Task
 
 Write a program that:
 Creates an array of 10 integers and fills it with random numbers from 1 to 100.
