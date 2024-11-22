@@ -128,10 +128,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         ////////////////// Back button //////////////////
         if(window.location.pathname.includes('playground.html'))
         {
-            const tg = window.Telegram?.WebApp;
-            if (tg) {
-                tg.BackButton.show();
-                tg.BackButton.onClick(() => {
+            if (window.Telegram.WebApp) {
+                window.Telegram.WebApp.BackButton.show();
+                window.Telegram.WebApp.BackButton.onClick(() => {
                     window.location.href = 'index.html';
                 });
             }
