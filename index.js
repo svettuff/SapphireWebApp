@@ -1,6 +1,4 @@
-import { init, initData , backButton, invoice } from '@telegram-apps/sdk';
-
-init();
+import { initData , backButton, invoice } from '@telegram-apps/sdk';
 
 if (backButton.mount.isAvailable()) {
     backButton.mount();
