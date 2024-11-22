@@ -123,12 +123,6 @@ async function createPaymentLink()
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const tg = window.Telegram?.WebApp;
-
-    if (!tg) {
-        return;
-    }
-
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
         const responseElement = document.getElementById('response-text');
