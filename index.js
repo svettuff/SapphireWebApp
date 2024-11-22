@@ -37,7 +37,6 @@ async function selectTopic(fileName)
         }
         else
         {
-            window.Telegram.WebApp.BackButton.show();
             window.location.href = 'playground.html';
         }
     }
