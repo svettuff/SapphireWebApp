@@ -124,46 +124,8 @@ async function createPaymentLink()
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-    if (window.location.pathname.includes('playground.html') || window.location.pathname.includes('playgroundRU.html'))
+    if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
-        //window.Telegram.WebApp.BackButton.show();
-        //if(window.location.pathname.includes('playground.html'))
-        //{
-        //    window.Telegram.WebApp.BackButton.onClick(() => {
-        //        window.location.href = 'index.html';
-        //    });
-        //}
-        //else
-        //{
-        //    window.Telegram.WebApp.BackButton.onClick(() => {
-        //        window.location.href = 'topicsRU.html';
-        //    });
-        //}
-
-        const currentPath = window.location.pathname; // Получаем текущий путь страницы
-
-        try {
-            const response = await fetch('https://sapphireserver.almandine.ch:443/check-path', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    question: question,      // Ваша переменная "вопрос"
-                    path: currentPath        // Добавляем текущий путь
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP Error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log("Ответ сервера:", data);
-        } catch (error) {
-            console.error("Ошибка при выполнении запроса:", error);
-        }
-
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
 
