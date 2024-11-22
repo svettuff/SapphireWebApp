@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         })
 
-        setTimeout(() => {
+        setTimeout(async () => {
             window.Telegram.WebApp.BackButton.show();
         }, 2000);
     }
