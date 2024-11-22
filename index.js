@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     else
     {
+        window.Telegram.WebApp.BackButton.hide();
         await checkUserPayment();
     }
 });
