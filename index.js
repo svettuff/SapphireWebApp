@@ -234,6 +234,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error("Error:", error);
             }
         })
+
+        setTimeout(() => {
+            window.Telegram.WebApp.BackButton.show();
+        }, 2000);
     }
     else
     {
