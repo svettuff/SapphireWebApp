@@ -1,5 +1,9 @@
 import { initData , backButton, invoice } from '@telegram-apps/sdk';
 
+if (backButton.mount.isAvailable()) {
+    backButton.mount();
+}
+
 ////////////////////////////////////////////* Functions *////////////////////////////////////////////
 
 function unlockAllTopics()
@@ -120,8 +124,7 @@ async function createPaymentLink()
 
 document.addEventListener('DOMContentLoaded', async () => {
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html')) {
-        if (backButton.mount.isAvailable()) {
-            backButton.mount();
+        if (backButton.show.isAvailable()) {
             backButton.show();
         }
         if (backButton.onClick.isAvailable()) {
