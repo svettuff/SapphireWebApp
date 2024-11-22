@@ -126,6 +126,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
         window.Telegram.WebApp.BackButton.show();
+
+        if(window.location.pathname.endsWith('/playground.html'))
+        {
+            window.Telegram.WebApp.BackButton.onClick(() => {
+                window.location.href = 'index.html';
+            });
+        }
+        else
+        {
+            window.Telegram.WebApp.BackButton.onClick(() => {
+                window.location.href = 'topicsRU.html';
+            });
+        }
+
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
 
