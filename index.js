@@ -123,28 +123,30 @@ async function createPaymentLink()
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+    window.Telegram.WebApp.BackButton.show();
     if (window.location.pathname.includes('playground.html') || window.location.pathname.includes('playgroundRU.html'))
     {
         ////////////////// Back button //////////////////
-        if(window.location.pathname.includes('playground.html'))
-        {
-            if (window.Telegram.WebApp) {
-                window.Telegram.WebApp.BackButton.show();
-                window.Telegram.WebApp.BackButton.onClick(() => {
-                    window.location.href = 'index.html';
-                });
-            }
-        }
-        else
-        {
-            const tg = window.Telegram?.WebApp;
-            if (tg) {
-                tg.BackButton.show();
-                tg.BackButton.onClick(() => {
-                    window.location.href = 'topicsRU.html';
-                });
-            }
-        }
+        //if(window.location.pathname.includes('playground.html'))
+        //{
+        //    if (window.Telegram.WebApp) {
+        //
+        //        window.Telegram.WebApp.BackButton.onClick(() => {
+        //            window.location.href = 'index.html';
+        //        });
+        //    }
+        //}
+        //else
+        //{
+        //    const tg = window.Telegram?.WebApp;
+        //    if (tg) {
+        //        tg.BackButton.show();
+        //        tg.BackButton.onClick(() => {
+        //            window.location.href = 'topicsRU.html';
+        //        });
+        //    }
+        //}
 
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
