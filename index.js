@@ -120,18 +120,12 @@ async function createPaymentLink()
     }
 }
 
-async function showBackButton()
-{
-    window.Telegram.WebApp.BackButton.show();
-}
-
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
-        await showBackButton();
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
 
@@ -241,6 +235,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error("Error:", error);
             }
         })
+
+        window.Telegram.WebApp.BackButton.show();
     }
     else
     {
