@@ -50,6 +50,8 @@ async function checkUserPayment()
 {
     const tg = window.Telegram.WebApp;
 
+    window.Telegram.WebApp.BackButton.hide();
+
     const user = tg.initDataUnsafe?.user;
     if (user)
     {
@@ -235,9 +237,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         })
 
-        setTimeout(async () => {
-            window.Telegram.WebApp.BackButton.show();
-        }, 2000);
+        window.Telegram.WebApp.BackButton.show();
     }
     else
     {
