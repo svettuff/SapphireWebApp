@@ -1,5 +1,3 @@
-import { initData , backButton, invoice } from '@telegram-apps/sdk';
-
 ////////////////////////////////////////////* Functions *////////////////////////////////////////////
 
 function unlockAllTopics()
@@ -12,7 +10,6 @@ function unlockAllTopics()
 
 ////////////////////////////////////////////* Async Functions *////////////////////////////////////////////
 
-window.selectTopic = selectTopic;
 async function selectTopic(fileName)
 {
     const topicButton = event.target;
@@ -51,7 +48,9 @@ async function selectTopic(fileName)
 
 async function checkUserPayment()
 {
-    const user = initData.user;
+    const tg = window.Telegram.WebApp;
+
+    const user = tg.initDataUnsafe?.user;
     if (user)
     {
         try
@@ -97,12 +96,17 @@ async function createPaymentLink()
         const data = await response.json();
         if (data.invoiceLink)
         {
-            const status = await invoice.open(data.invoiceLink, 'url');
-
-            if( status === 'cancelled' || status === 'paid' || status === 'failed')
+            if (window.Telegram && window.Telegram.WebApp)
             {
-                document.getElementById('modal-overlay').style.display = 'none';
-                await checkUserPayment();
+                window.Telegram.WebApp.openInvoice(data.invoiceLink);
+                window.Telegram.WebApp.onEvent('invoiceClosed', async (event) => {
+                        document.getElementById('modal-overlay').style.display = 'none';
+                        await checkUserPayment();
+                });
+            }
+            else
+            {
+                window.open(data.invoiceLink, "_blank");
             }
         }
         else
@@ -119,27 +123,6 @@ async function createPaymentLink()
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html')) {
-        if (backButton.mount.isAvailable()) {
-            backButton.mount();
-            backButton.show();
-        }
-        if (backButton.onClick.isAvailable()) {
-            backButton.onClick(() => {
-                if (window.location.pathname.endsWith('/playground.html')) {
-                    window.location.href = 'index.html';
-                } else if (window.location.pathname.endsWith('/playgroundRU.html')) {
-                    window.location.href = 'topicsRU.html';
-                }
-            });
-        }
-    }
-    else {
-        if (backButton.hide.isAvailable()) {
-            backButton.hide();
-        }
-    }
-
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
         const responseElement = document.getElementById('response-text');
