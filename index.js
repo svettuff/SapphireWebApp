@@ -139,7 +139,7 @@ async function loadMarkdownContent()
     }
 }
 
-async function setupCodeMirror()
+function setupCodeMirror()
 {
     const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
         mode: 'text/x-c++src',
@@ -177,19 +177,14 @@ async function setupCodeMirror()
 
 function initializeTelegramAPI()
 {
-    const tg = window.Telegram?.WebApp;
-    if (!tg) {
-        return;
-    }
-
-    tg.BackButton.show();
+    window.Telegram?.WebApp.BackButton.show();
 
     if (window.location.pathname.includes('playground.html')) {
-        tg.BackButton.onClick(() => {
+        window.Telegram?.WebApp.BackButton.onClick(() => {
             window.location.href = 'index.html';
         });
     } else if (window.location.pathname.includes('playgroundRU.html')) {
-        tg.BackButton.onClick(() => {
+        window.Telegram?.WebApp.BackButton.onClick(() => {
             window.location.href = 'topicsRU.html';
         });
     }
@@ -202,7 +197,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
         await loadMarkdownContent();
-        await setupCodeMirror();
+        setupCodeMirror();
         initializeTelegramAPI();
 
         const runButton = document.getElementById('run-button');
