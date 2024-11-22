@@ -120,85 +120,59 @@ async function createPaymentLink()
     }
 }
 
-async function loadMarkdownContent()
-{
-    const responseElement = document.getElementById('response-text');
-    const responseText = localStorage.getItem('theme');
-
-    if (responseText)
-    {
-        responseElement.innerHTML = marked.parse(responseText);
-        const codeBlocks = responseElement.querySelectorAll('pre code');
-        codeBlocks.forEach((block) => {
-            hljs.highlightElement(block);
-        });
-    }
-    else
-    {
-        responseElement.innerText = "No theme.";
-    }
-}
-
-function setupCodeMirror()
-{
-    const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-        mode: 'text/x-c++src',
-        matchBrackets: true,
-        theme: 'playground',
-    });
-
-    const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), { theme: 'playground', lineWrapping: true });
-    const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor', theme: 'playground', lineWrapping: true });
-    const questionEditor = CodeMirror.fromTextArea(document.getElementById('question'), { theme: 'playground', lineWrapping: true, indentWithTabs: false, indentUnit: 0 });
-
-    const editorWrapper = editor.getWrapperElement();
-    editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
-    editorWrapper.style.fontSize = '17px';
-    editorWrapper.style.padding = '2px';
-
-    const inputWrapper = inputEditor.getWrapperElement();
-    inputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
-    inputWrapper.style.fontSize = '17px';
-    inputWrapper.style.padding = '2px';
-    inputWrapper.style.height = '50px';
-
-    const outputWrapper = outputEditor.getWrapperElement();
-    outputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
-    outputWrapper.style.fontSize = '17px';
-    outputWrapper.style.padding = '2px';
-    outputWrapper.style.height = '150px';
-
-    const questionWrapper = questionEditor.getWrapperElement();
-    questionWrapper.style.fontFamily = '"Courier New", Courier, monospace';
-    questionWrapper.style.fontSize = '17px';
-    questionWrapper.style.padding = '2px';
-    questionWrapper.style.height = '300px';
-}
-
-function initializeTelegramAPI()
-{
-    window.Telegram?.WebApp.BackButton.show();
-
-    if (window.location.pathname.includes('playground.html')) {
-        window.Telegram?.WebApp.BackButton.onClick(() => {
-            window.location.href = 'index.html';
-        });
-    } else if (window.location.pathname.includes('playgroundRU.html')) {
-        window.Telegram?.WebApp.BackButton.onClick(() => {
-            window.location.href = 'topicsRU.html';
-        });
-    }
-}
-
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
-
-    if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
+    if (window.location.pathname.includes('playground.html') || window.location.pathname.includes('playgroundRU.html'))
     {
-        await loadMarkdownContent();
-        setupCodeMirror();
-        initializeTelegramAPI();
+        const responseElement = document.getElementById('response-text');
+        const responseText = localStorage.getItem('theme');
+
+        if (responseText)
+        {
+            responseElement.innerHTML = marked.parse(responseText);
+            const codeBlocks = responseElement.querySelectorAll('pre code');
+            codeBlocks.forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        }
+        else
+        {
+            responseElement.innerText = "No theme.";
+        }
+
+        const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+            mode: 'text/x-c++src',
+            matchBrackets: true,
+            theme: 'playground',
+        });
+
+        const inputEditor = CodeMirror.fromTextArea(document.getElementById('input'), { theme: 'playground', lineWrapping: true });
+        const outputEditor = CodeMirror.fromTextArea(document.getElementById('output'), { readOnly: 'nocursor', theme: 'playground', lineWrapping: true });
+        const questionEditor = CodeMirror.fromTextArea(document.getElementById('question'), { theme: 'playground', lineWrapping: true, indentWithTabs: false, indentUnit: 0 });
+
+        const editorWrapper = editor.getWrapperElement();
+        editorWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+        editorWrapper.style.fontSize = '17px';
+        editorWrapper.style.padding = '2px';
+
+        const inputWrapper = inputEditor.getWrapperElement();
+        inputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+        inputWrapper.style.fontSize = '17px';
+        inputWrapper.style.padding = '2px';
+        inputWrapper.style.height = '50px';
+
+        const outputWrapper = outputEditor.getWrapperElement();
+        outputWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+        outputWrapper.style.fontSize = '17px';
+        outputWrapper.style.padding = '2px';
+        outputWrapper.style.height = '150px';
+
+        const questionWrapper = questionEditor.getWrapperElement();
+        questionWrapper.style.fontFamily = '"Courier New", Courier, monospace';
+        questionWrapper.style.fontSize = '17px';
+        questionWrapper.style.padding = '2px';
+        questionWrapper.style.height = '300px';
 
         const runButton = document.getElementById('run-button');
         runButton.addEventListener('click', async () => {
