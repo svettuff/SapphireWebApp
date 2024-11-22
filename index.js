@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
+        window.Telegram.WebApp.BackButton.show();
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
 
@@ -238,7 +239,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     else
     {
-        //window.Telegram.WebApp.BackButton.hide();
         await checkUserPayment();
     }
 });
