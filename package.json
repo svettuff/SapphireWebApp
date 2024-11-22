@@ -8,6 +8,7 @@
   },
   "private": true,
   "dependencies": {
+    "@telegram-apps/sdk": "^2.6.2",
     "@tonconnect/ui": "^2.0.9"
   }
 }
