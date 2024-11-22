@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
         await loadMarkdownContent();
+        await setupCodeMirror();
         initializeTelegramAPI();
 
         const runButton = document.getElementById('run-button');
