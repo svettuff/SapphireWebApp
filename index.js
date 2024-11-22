@@ -120,13 +120,18 @@ async function createPaymentLink()
     }
 }
 
+async function showBackButton()
+{
+    window.Telegram.WebApp.BackButton.show();
+}
+
 ////////////////////////////////////////////* Events *////////////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     if (window.location.pathname.endsWith('/playground.html') || window.location.pathname.endsWith('/playgroundRU.html'))
     {
-        window.Telegram.WebApp.BackButton.show();
+        await showBackButton();
         const responseElement = document.getElementById('response-text');
         const responseText = localStorage.getItem('theme');
 
