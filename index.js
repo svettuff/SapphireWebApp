@@ -236,7 +236,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         })
 
-        window.Telegram.WebApp.BackButton.show();
+        if (window.Telegram && window.Telegram.WebApp)
+        {
+            window.Telegram.WebApp.BackButton.show();
+        }
     }
     else
     {
