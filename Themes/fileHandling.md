@@ -4,11 +4,9 @@ Files allow saving and retrieving data between program runs. In C++, the `<fstre
 
 ### Main Classes for File Handling
 
-`std::ifstream` — for reading from a file.
-
-`std::ofstream` — for writing to a file.
-
-`std::fstream` — for both reading and writing.
+- `std::ifstream` — for reading from a file.
+- `std::ofstream` — for writing to a file.
+- `std::fstream` — for both reading and writing.
 
 **Example:** Writing Data to a File
 
@@ -89,12 +87,8 @@ int main() {
 
 ### Main File Access Flags
 
-`ios::in` — open the file for reading.
-
-`ios::out` — open the file for writing.
-
-`ios::app` — append data to the end of the file.
-
-`ios::trunc` — clear the file when opening.
-
-`ios::binary` — binary mode.
+- `ios::in` — open the file for reading.
+- `ios::out` — open the file for writing.
+- `ios::app` — append data to the end of the file.
+- `ios::trunc` — clear the file when opening.
+- `ios::binary` — binary mode.
